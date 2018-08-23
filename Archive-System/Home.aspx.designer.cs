@@ -10,69 +10,69 @@
 namespace Archive_System {
     
     
-    public partial class SiteMaster {
+    public partial class _Default {
         
         /// <summary>
-        /// header control.
+        /// lbl_searchbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl header;
+        protected global::System.Web.UI.WebControls.Label lbl_searchbox;
         
         /// <summary>
-        /// Panel1 control.
+        /// TbxSearchTerms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.TextBox TbxSearchTerms;
         
         /// <summary>
-        /// TbxTopFind control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxTopFind;
+        protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// BtnTopFind control.
+        /// DrpItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BtnTopFind;
+        protected global::System.Web.UI.WebControls.DropDownList DrpItem;
         
         /// <summary>
-        /// navbar control.
+        /// DrpWords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl navbar;
+        protected global::System.Web.UI.WebControls.DropDownList DrpWords;
         
         /// <summary>
-        /// MainContent control.
+        /// DrpField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.DropDownList DrpField;
         
         /// <summary>
-        /// footer_primary control.
+        /// BtnSearchLib control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl footer_primary;
+        protected global::System.Web.UI.WebControls.Button BtnSearchLib;
     }
 }
