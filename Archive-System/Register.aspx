@@ -97,7 +97,7 @@
                                 </div>
                             </div>
                             <asp:Button ID="BtnCreate" runat="server" Text="Create My Account"
-                                CssClass="btn btn-library-10 form-control form-control-lg" OnClick="BtnCreate_Click" />
+                                CssClass="btn btn-library-10 form-control form-control-lg" />
                             <div class="divider">
                                 <hr class="left">
                                 <small>Need to start again?</small>
