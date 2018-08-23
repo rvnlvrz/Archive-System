@@ -12,9 +12,9 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="Content/fontAwseome.all.min.css" rel="stylesheet" />
+    <link href="Content/academicons.min.css" rel="stylesheet" />
 </head>
 <body>
     <form runat="server">
@@ -170,5 +170,8 @@
         </footer>
 
     </form>
+    <script src="Scripts/navScroll.js"></script>
+    <script src="Scripts/fontAwesome.all.min.js"></script>
+    <script src="Scripts/FooterAccordion.js"></script>
 </body>
 </html>

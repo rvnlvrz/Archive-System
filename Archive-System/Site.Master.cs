@@ -13,5 +13,12 @@ namespace Archive_System
         {
 
         }
+
+        public void HideFooterHeader()
+        {
+            header.Visible = false;
+            navbar.Visible = false;
+            footer_primary.Visible = false;
+        }
     }
 }

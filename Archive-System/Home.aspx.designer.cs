@@ -10,7 +10,7 @@
 namespace Archive_System {
     
     
-    public partial class _Default {
+    public partial class Home {
         
         /// <summary>
         /// lbl_searchbox control.

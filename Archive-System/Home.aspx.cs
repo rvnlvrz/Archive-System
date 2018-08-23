@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace Archive_System
 {
-    public partial class _Default : Page
-    {
-        protected void Page_Load(object sender, EventArgs e)
-        {
+	public partial class Home : System.Web.UI.Page
+	{
+		protected void Page_Load(object sender, EventArgs e)
+		{
 
-        }
-    }
+		}
+	}
 }
