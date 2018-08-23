@@ -20,5 +20,17 @@ namespace Archive_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Login LoginControl;
+        
+        /// <summary>
+        /// Master property.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated property.
+        /// </remarks>
+        public new Archive_System.SiteMaster Master {
+            get {
+                return ((Archive_System.SiteMaster)(base.Master));
+            }
+        }
     }
 }
