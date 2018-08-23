@@ -61,3 +61,10 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# Ignore vendor owned assets
+Archive-System/Content/* linguist-vendored=true
+Archive-System/Scripts/* linguist-vendored=true
+
+# Include owned assets
+Archive-System/Content/Site.css linguist-vendored=false
