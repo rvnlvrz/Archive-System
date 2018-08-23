@@ -5,13 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Archive_System
+namespace Archive_System.Membership
 {
     public partial class Register : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Master.HideFooterHeader();
         }
     }
 }
