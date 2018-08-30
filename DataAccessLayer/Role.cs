@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Archive_System
+namespace DataAccessLayer
 {
     using System;
     using System.Collections.Generic;

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Archive_System
+namespace DataAccessLayer
 {
     using System;
     using System.Data.Entity;
@@ -15,7 +15,7 @@ namespace Archive_System
     
     public partial class Entities : DbContext
     {
-        public Entities()
+        public Entities() 
             : base("name=Entities")
         {
         }
