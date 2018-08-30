@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="card" style="border-color: rebeccapurple; width: 24rem;">
                         <div class="card-body">
-                            <asp:Login ID="LoginControl" runat="server" LoginButtonText="Sign In" TitleText="" RenderOuterTable="False" OnAuthenticate="LoginControl_Authenticate" CreateUserText="Not Registered?" OnLoginError="LoginControl_LoginError" DestinationPageUrl="Home.aspx">
+                            <asp:Login ID="LoginControl" runat="server" LoginButtonText="Sign In" TitleText="" RenderOuterTable="False" OnAuthenticate="LoginControl_Authenticate" CreateUserText="Not Registered?" OnLoginError="LoginControl_LoginError" DestinationPageUrl="~/Default.aspx">
                                 <LayoutTemplate>
                                     <div class="form-group">
                                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
