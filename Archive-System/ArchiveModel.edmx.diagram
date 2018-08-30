@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="702b74bdf4dd4b84ad0106d07d3591f1" Name="Diagram1" ZoomLevel="121">
+        <EntityTypeShape EntityType="Model.Application" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Membership" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Profile" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.MembershipEntity_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.RoleEntity_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.User_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.MembershipEntity_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.ProfileEntity_User" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.UsersInRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Document" Width="1.5" PointX="5.5" PointY="3.5" />
+        <EntityTypeShape EntityType="Model.Author" Width="1.5" PointX="7.625" PointY="3.5" />
+        <AssociationConnector Association="Model.AuthorUser" />
+        <AssociationConnector Association="Model.AuthorDocument" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
