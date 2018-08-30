@@ -24,13 +24,19 @@ namespace Archive_System
         {
             string fileName = Path.GetFileName(FileUpload_Documents.PostedFile.FileName);
             string contentType = FileUpload_Documents.PostedFile.ContentType;
+            byte[] bytes;
             using (Stream fs = FileUpload_Documents.PostedFile.InputStream)
             {
                 using (BinaryReader br = new BinaryReader(fs))
                 {
+                    bytes = br.ReadBytes((Int32)fs.Length);
+                }
+            }
 
-                    byte[] bytes = br.ReadBytes((Int32)fs.Length);
-
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
                     using (SqlConnection conn = new SqlConnection(connString))
                     {
                         conn.Open();
@@ -40,50 +46,28 @@ namespace Archive_System
                             comm.Parameters.Add("@filename", SqlDbType.NVarChar).Value = fileName;
                             comm.Parameters.Add("@extension", SqlDbType.NVarChar).Value = contentType;
                             comm.Parameters.Add("@file", SqlDbType.VarBinary).Value = bytes;
-                            comm.Parameters.Add("@authorA", SqlDbType.Int).Value = 1;
-                            comm.Parameters.Add("@authorB", SqlDbType.Int).Value = 0;
-                            comm.Parameters.Add("@authorC", SqlDbType.Int).Value = 0;
+                            comm.Parameters.Add("@authAFirst", SqlDbType.NVarChar).Value = Tbx_AuthA_First.Text;
+                            comm.Parameters.Add("@authALast", SqlDbType.NVarChar).Value = Tbx_AuthA_Last.Text;
+                            comm.Parameters.Add("@authBFirst", SqlDbType.NVarChar).Value = Tbx_AuthB_First.Text;
+                            comm.Parameters.Add("@authBLast", SqlDbType.NVarChar).Value = Tbx_AuthB_Last.Text;
+                            comm.Parameters.Add("@authCFirst", SqlDbType.NVarChar).Value = Tbx_AuthC_First.Text;
+                            comm.Parameters.Add("@authCLast", SqlDbType.NVarChar).Value = Tbx_AuthC_Last.Text;
                             comm.ExecuteNonQuery();
                         }
                     }
 
+                    scope.Complete();
                 }
+            }
+            catch (Exception)
+            {
 
             }
         }
 
         private void downloadFile()
         {
-            // Send a download file to the client given the filename.
-            string guid = Request.QueryString["file"];
-            string fileName = "vsKeys.txt";
-            byte[] data = new byte[] { 0, 0, 0, 0 };
-            using (SqlConnection con = new SqlConnection(connString))
-            {
-                con.Open();
-                string strcmd = "SELECT File FROM Documents WHERE ID=@id";
-                using (SqlCommand cmd = new SqlCommand(strcmd, con))
-                {
-                    cmd.Parameters.AddWithValue("@id", guid);
-                    using (SqlDataReader r = cmd.ExecuteReader())
-                    {
-                        if (r.Read())
-                        {
-                            fileName = (string)r["filename"];
-                            data = (byte[])r["dataContent"];
-                        }
-                    }
-                }
-            }
-            Response.Clear();
-            Response.AddHeader("Cache-Control", "no-cache, must-revalidate, post-check=0, pre-check=0");
-            Response.AddHeader("Pragma", "no-cache");
-            Response.AddHeader("Content-Description", "File Download");
-            Response.AddHeader("Content-Type", "application/force-download");
-            Response.AddHeader("Content-Transfer-Encoding", "binary\n");
-            Response.AddHeader("content-disposition", "attachment;filename=" + fileName);
-            Response.BinaryWrite(data);
-            Response.End();
+
         }
 
         /// <summary>
