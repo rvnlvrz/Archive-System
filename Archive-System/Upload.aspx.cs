@@ -63,43 +63,45 @@ namespace Archive_System
             {
 
             }
+
+            downloadFile();
         }
 
         private void downloadFile()
         {
+            int id = 4;
+            byte[] bytes = null;
+            string fileName = "";
+            string contentType = "";
 
-        }
-
-        /// <summary>
-        /// Obtain the userID associated with a certain first and last name in the database
-        /// </summary>
-        /// <param name="first">The first name of the author</param>
-        /// <param name="last">The last name of the author</param>
-        /// <returns>The user ID of the author in the database</returns>
-        private int GetUserID(string first, string last)
-        {
-            int userID = -1;
-            try
+            using (SqlConnection conn = new SqlConnection(connString))
             {
-                using (SqlConnection conn = new SqlConnection(connString))
+                conn.Open();
+                string query = "SELECT * FROM Documents WHERE ID = @id";
+                using(SqlCommand comm = new SqlCommand(query, conn))
                 {
-                    conn.Open();
-                    string query = "SELECT UserID FROM Users WEHRE FirstName=@first AND LastName=@last";
-                    using (SqlCommand comm = new SqlCommand(query, conn))
+                    comm.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                    using(SqlDataReader reader = comm.ExecuteReader())
                     {
-                        comm.Parameters.Add("@first", SqlDbType.NVarChar).Value = first;
-                        comm.Parameters.Add("@last", SqlDbType.NVarChar).Value = last;
-                        userID = (int)comm.ExecuteScalar();
+                        while (reader.Read())
+                        {
+                            bytes = (byte[])reader["File"];
+                            fileName = Convert.ToString(reader["Name"]);
+                            contentType = Convert.ToString(reader["Extension"]);
+                        }
                     }
                 }
             }
-            catch (Exception)
-            {
 
-            }
-
-            return userID != -1 ? userID : 0;
-
+            Response.Clear();
+            Response.AddHeader("Cache-Control", "no-cache, must-revalidate, post-check=0, pre-check=0");
+            Response.AddHeader("Pragma", "no-cache");
+            Response.AddHeader("Content-Description", "File Download");
+            Response.AddHeader("Content-Type", "application/force-download");
+            Response.AddHeader("Content-Transfer-Encoding", "binary\n");
+            Response.AddHeader("content-disposition", "attachment;filename=" + fileName);
+            Response.BinaryWrite(bytes);
+            Response.End();
         }
     }
 }
