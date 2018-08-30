@@ -251,7 +251,7 @@
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ArchiveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Application">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -327,7 +327,7 @@
           <NavigationProperty Name="Membership" Relationship="Self.MembershipEntity_User" FromRole="Users" ToRole="Memberships" />
           <NavigationProperty Name="Profile" Relationship="Self.ProfileEntity_User" FromRole="Users" ToRole="Profiles" />
           <NavigationProperty Name="Roles" Relationship="Self.UsersInRoles" FromRole="Users" ToRole="Roles" />
-          <NavigationProperty Name="Authors" Relationship="Model.AuthorUser" FromRole="User" ToRole="Author" />
+          <NavigationProperty Name="Authors" Relationship="ArchiveModel.AuthorUser" FromRole="User" ToRole="Author" />
         </EntityType>
         <Association Name="MembershipEntity_Application">
           <End Role="Applications" Type="Self.Application" Multiplicity="1" />
@@ -423,13 +423,13 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="Documents" EntityType="Model.Document" />
-          <EntitySet Name="Authors" EntityType="Model.Author" />
-          <AssociationSet Name="AuthorUser" Association="Model.AuthorUser">
+          <EntitySet Name="Documents" EntityType="ArchiveModel.Document" />
+          <EntitySet Name="Authors" EntityType="ArchiveModel.Author" />
+          <AssociationSet Name="AuthorUser" Association="ArchiveModel.AuthorUser">
             <End Role="Author" EntitySet="Authors" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="AuthorDocument" Association="Model.AuthorDocument">
+          <AssociationSet Name="AuthorDocument" Association="ArchiveModel.AuthorDocument">
             <End Role="Author" EntitySet="Authors" />
             <End Role="Document" EntitySet="Documents" />
           </AssociationSet>
@@ -442,21 +442,21 @@
           <Property Name="Name" Type="String" Nullable="false" Unicode="true" MaxLength="50" />
           <Property Name="File" Type="Binary" Nullable="false" MaxLength="Max" />
           <Property Name="Extension" Type="String" Nullable="false" MaxLength="20" Unicode="true" />
-          <NavigationProperty Name="Authors" Relationship="Model.AuthorDocument" FromRole="Document" ToRole="Author" />
+          <NavigationProperty Name="Authors" Relationship="ArchiveModel.AuthorDocument" FromRole="Document" ToRole="Author" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="User" Relationship="Model.AuthorUser" FromRole="Author" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="ArchiveModel.AuthorUser" FromRole="Author" ToRole="User" />
           <Property Name="UserID" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Document" Relationship="Model.AuthorDocument" FromRole="Author" ToRole="Document" />
+          <NavigationProperty Name="Document" Relationship="ArchiveModel.AuthorDocument" FromRole="Author" ToRole="Document" />
           <Property Name="DocumentID" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="AuthorUser">
-          <End Type="Model.Author" Role="Author" Multiplicity="*" />
-          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="ArchiveModel.Author" Role="Author" Multiplicity="*" />
+          <End Type="ArchiveModel.User" Role="User" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="UserId" />
@@ -467,8 +467,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="AuthorDocument">
-          <End Type="Model.Author" Role="Author" Multiplicity="*" />
-          <End Type="Model.Document" Role="Document" Multiplicity="1" />
+          <End Type="ArchiveModel.Author" Role="Author" Multiplicity="*" />
+          <End Type="ArchiveModel.Document" Role="Document" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Document">
               <PropertyRef Name="ID" />
@@ -485,7 +485,7 @@
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
     <EntitySetMapping Name="Applications">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Application)">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.Application)">
         <MappingFragment StoreEntitySet="Applications">
           <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
           <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
@@ -494,7 +494,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Memberships">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Membership)">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.Membership)">
         <MappingFragment StoreEntitySet="Memberships">
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
@@ -519,7 +519,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Profiles">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Profile)">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.Profile)">
         <MappingFragment StoreEntitySet="Profiles">
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
@@ -530,7 +530,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Role)">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.Role)">
         <MappingFragment StoreEntitySet="Roles">
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
           <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
@@ -540,7 +540,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.User)">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.User)">
         <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
@@ -554,7 +554,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Documents">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Document)">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.Document)">
         <MappingFragment StoreEntitySet="Documents">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -564,7 +564,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Authors">
-      <EntityTypeMapping TypeName="IsTypeOf(Model.Author)">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.Author)">
         <MappingFragment StoreEntitySet="Authors">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
@@ -572,7 +572,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="UsersInRoles" TypeName="Model.UsersInRoles" StoreEntitySet="UsersInRoles">
+    <AssociationSetMapping Name="UsersInRoles" TypeName="ArchiveModel.UsersInRoles" StoreEntitySet="UsersInRoles">
       <EndProperty Name="Roles">
         <ScalarProperty Name="RoleId" ColumnName="Roles_RoleId" />
       </EndProperty>
