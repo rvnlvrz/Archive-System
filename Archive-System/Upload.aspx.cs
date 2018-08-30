@@ -77,6 +77,7 @@ namespace Archive_System
             {
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
+                    conn.Open();
                     string query = "SELECT UserID FROM Users WEHRE FirstName=@first AND LastName=@last";
                     using (SqlCommand comm = new SqlCommand(query, conn))
                     {
