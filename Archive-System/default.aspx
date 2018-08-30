@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="Archive_System.Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="Archive_System.Home" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid parallax" id="searchbox">
         <div class="wrap">
             <div class="col-sm-12">
                 <div class="pt-5 mt-5">
-                    <div class="container" id="searchbox-inner">
+                    <div class="container white-box">
                         <div class="wrap">
                             <div class="container">
                                 <div class="form-group mb-1">
