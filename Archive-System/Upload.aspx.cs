@@ -64,44 +64,6 @@ namespace Archive_System
 
             }
 
-            downloadFile();
-        }
-
-        private void downloadFile()
-        {
-            int id = 4;
-            byte[] bytes = null;
-            string fileName = "";
-            string contentType = "";
-
-            using (SqlConnection conn = new SqlConnection(connString))
-            {
-                conn.Open();
-                string query = "SELECT * FROM Documents WHERE ID = @id";
-                using(SqlCommand comm = new SqlCommand(query, conn))
-                {
-                    comm.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                    using(SqlDataReader reader = comm.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            bytes = (byte[])reader["File"];
-                            fileName = Convert.ToString(reader["Name"]);
-                            contentType = Convert.ToString(reader["Extension"]);
-                        }
-                    }
-                }
-            }
-
-            Response.Clear();
-            Response.AddHeader("Cache-Control", "no-cache, must-revalidate, post-check=0, pre-check=0");
-            Response.AddHeader("Pragma", "no-cache");
-            Response.AddHeader("Content-Description", "File Download");
-            Response.AddHeader("Content-Type", "application/force-download");
-            Response.AddHeader("Content-Transfer-Encoding", "binary\n");
-            Response.AddHeader("content-disposition", "attachment;filename=" + fileName);
-            Response.BinaryWrite(bytes);
-            Response.End();
         }
     }
 }
