@@ -12,7 +12,7 @@ namespace Archive_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Master.HideFooterHeader();
         }
 
         protected void LoginControl_LoginError(object sender, EventArgs e)
