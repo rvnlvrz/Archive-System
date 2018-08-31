@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/30/2018 17:44:42
+-- Date Created: 08/31/2018 19:32:05
 -- Generated from EDMX file: C:\Users\Arvin\source\repos\Archive-System\DataAccessLayer\ArchiveModel.edmx
 -- --------------------------------------------------
 
@@ -69,6 +69,12 @@ IF OBJECT_ID(N'[dbo].[Documents]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Authors]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Authors];
+GO
+IF OBJECT_ID(N'[dbo].[Categories]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Categories];
+GO
+IF OBJECT_ID(N'[dbo].[Attachments]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Attachments];
 GO
 IF OBJECT_ID(N'[dbo].[UsersInRoles]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UsersInRoles];
@@ -145,9 +151,9 @@ GO
 -- Creating table 'Documents'
 CREATE TABLE [dbo].[Documents] (
     [ID] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(50)  NOT NULL,
+    [Name] nvarchar(200)  NOT NULL,
     [File] varbinary(max)  NOT NULL,
-    [Extension] nvarchar(20)  NOT NULL
+    [ContentType] nvarchar(80)  NOT NULL
 );
 GO
 
@@ -156,6 +162,23 @@ CREATE TABLE [dbo].[Authors] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [UserID] uniqueidentifier  NOT NULL,
     [DocumentID] int  NOT NULL
+);
+GO
+
+-- Creating table 'Categories'
+CREATE TABLE [dbo].[Categories] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(10)  NOT NULL
+);
+GO
+
+-- Creating table 'Attachments'
+CREATE TABLE [dbo].[Attachments] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [Parent] int  NOT NULL,
+    [Name] nvarchar(200)  NOT NULL,
+    [File] varbinary(max)  NOT NULL,
+    [ContentType] nvarchar(80)  NOT NULL
 );
 GO
 
@@ -209,6 +232,18 @@ GO
 -- Creating primary key on [ID] in table 'Authors'
 ALTER TABLE [dbo].[Authors]
 ADD CONSTRAINT [PK_Authors]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'Categories'
+ALTER TABLE [dbo].[Categories]
+ADD CONSTRAINT [PK_Categories]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'Attachments'
+ALTER TABLE [dbo].[Attachments]
+ADD CONSTRAINT [PK_Attachments]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
@@ -337,6 +372,21 @@ GO
 CREATE INDEX [IX_FK_AuthorDocument]
 ON [dbo].[Authors]
     ([DocumentID]);
+GO
+
+-- Creating foreign key on [Parent] in table 'Attachments'
+ALTER TABLE [dbo].[Attachments]
+ADD CONSTRAINT [FK_AttachmentDocument]
+    FOREIGN KEY ([Parent])
+    REFERENCES [dbo].[Documents]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AttachmentDocument'
+CREATE INDEX [IX_FK_AttachmentDocument]
+ON [dbo].[Attachments]
+    ([Parent]);
 GO
 
 -- --------------------------------------------------

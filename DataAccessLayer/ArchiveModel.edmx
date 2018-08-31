@@ -13,6 +13,8 @@
     <EntitySet Name="Users" EntityType="ArchiveModel.Store.Users" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Documents" EntityType="ArchiveModel.Store.Documents" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Authors" EntityType="ArchiveModel.Store.Authors" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Categories" EntityType="ArchiveModel.Store.Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Attachments" EntityType="ArchiveModel.Store.Attachments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="UsersInRoles" EntityType="ArchiveModel.Store.UsersInRoles" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="MembershipEntity_Application" Association="ArchiveModel.Store.MembershipEntity_Application">
       <End Role="Applications" EntitySet="Applications" />
@@ -48,6 +50,10 @@
     </AssociationSet>
     <AssociationSet Name="AuthorDocument" Association="ArchiveModel.Store.AuthorDocument">
       <End Role="Author" EntitySet="Authors" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="AttachmentDocument" Association="ArchiveModel.Store.AttachmentDocument">
+      <End Role="Attachment" EntitySet="Attachments" />
       <End Role="Document" EntitySet="Documents" />
     </AssociationSet>
   </EntityContainer>
@@ -120,9 +126,9 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
     <Property Name="File" Type="varbinary(max)" Nullable="false" />
-    <Property Name="Extension" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="ContentType" Type="nvarchar" Nullable="false" MaxLength="80" />
   </EntityType>
   <EntityType Name="Authors">
     <Key>
@@ -131,6 +137,23 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="DocumentID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Attachments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Parent" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="File" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ContentType" Type="nvarchar" Nullable="false" MaxLength="80" />
   </EntityType>
   <EntityType Name="UsersInRoles">
     <Key>
@@ -221,6 +244,18 @@
       </Principal>
       <Dependent Role="Author">
         <PropertyRef Name="DocumentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AttachmentDocument">
+    <End Role="Attachment" Type="ArchiveModel.Store.Attachments" Multiplicity="*" />
+    <End Role="Document" Type="ArchiveModel.Store.Documents" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Document">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Attachment">
+        <PropertyRef Name="Parent" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -433,16 +468,23 @@
             <End Role="Author" EntitySet="Authors" />
             <End Role="Document" EntitySet="Documents" />
           </AssociationSet>
+          <EntitySet Name="Categories" EntityType="ArchiveModel.Category" />
+          <EntitySet Name="Attachments" EntityType="ArchiveModel.Attachment" />
+          <AssociationSet Name="AttachmentDocument" Association="ArchiveModel.AttachmentDocument">
+            <End Role="Attachment" EntitySet="Attachments" />
+            <End Role="Document" EntitySet="Documents" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Document">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" Unicode="true" MaxLength="50" />
+          <Property Name="Name" Type="String" Nullable="false" Unicode="true" MaxLength="200" />
           <Property Name="File" Type="Binary" Nullable="false" MaxLength="Max" />
-          <Property Name="Extension" Type="String" Nullable="false" MaxLength="20" Unicode="true" />
+          <Property Name="ContentType" Type="String" Nullable="false" MaxLength="80" Unicode="true" />
           <NavigationProperty Name="Authors" Relationship="ArchiveModel.AuthorDocument" FromRole="Document" ToRole="Author" />
+          <NavigationProperty Name="Attachments" Relationship="ArchiveModel.AttachmentDocument" FromRole="Document" ToRole="Attachment" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -475,6 +517,36 @@
             </Principal>
             <Dependent Role="Author">
               <PropertyRef Name="DocumentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="10" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Attachment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Parent" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" />
+          <Property Name="File" Type="Binary" Nullable="false" MaxLength="Max" />
+          <Property Name="ContentType" Type="String" Nullable="false" MaxLength="80" Unicode="true" />
+          <NavigationProperty Name="Document" Relationship="ArchiveModel.AttachmentDocument" FromRole="Attachment" ToRole="Document" />
+        </EntityType>
+        <Association Name="AttachmentDocument">
+          <End Type="ArchiveModel.Attachment" Role="Attachment" Multiplicity="*" />
+          <End Type="ArchiveModel.Document" Role="Document" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Document">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Attachment">
+              <PropertyRef Name="Parent" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -559,7 +631,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="File" ColumnName="File" />
-          <ScalarProperty Name="Extension" ColumnName="Extension" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -569,6 +641,25 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.Category)">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attachments">
+      <EntityTypeMapping TypeName="IsTypeOf(ArchiveModel.Attachment)">
+        <MappingFragment StoreEntitySet="Attachments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="File" ColumnName="File" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -18,14 +18,17 @@ namespace DataAccessLayer
         public Document()
         {
             this.Authors = new HashSet<Author>();
+            this.Attachments = new HashSet<Attachment>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
         public byte[] File { get; set; }
-        public string Extension { get; set; }
+        public string ContentType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Author> Authors { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Attachment> Attachments { get; set; }
     }
 }

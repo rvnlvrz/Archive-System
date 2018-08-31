@@ -16,10 +16,13 @@
         <AssociationConnector Association="ArchiveModel.MembershipEntity_User" ManuallyRouted="false" />
         <AssociationConnector Association="ArchiveModel.ProfileEntity_User" ManuallyRouted="false" />
         <AssociationConnector Association="ArchiveModel.UsersInRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="ArchiveModel.Document" Width="1.5" PointX="5.5" PointY="3.5" />
-        <EntityTypeShape EntityType="ArchiveModel.Author" Width="1.5" PointX="7.625" PointY="3.5" />
+        <EntityTypeShape EntityType="ArchiveModel.Document" Width="1.5" PointX="7.25" PointY="3.375" />
+        <EntityTypeShape EntityType="ArchiveModel.Author" Width="1.5" PointX="5.25" PointY="3.375" />
         <AssociationConnector Association="ArchiveModel.AuthorUser" />
         <AssociationConnector Association="ArchiveModel.AuthorDocument" />
+        <EntityTypeShape EntityType="ArchiveModel.Category" Width="1.5" PointX="9.125" PointY="3.375" />
+        <EntityTypeShape EntityType="ArchiveModel.Attachment" Width="1.5" PointX="9.125" PointY="5" />
+        <AssociationConnector Association="ArchiveModel.AttachmentDocument" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

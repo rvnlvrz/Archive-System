@@ -15,7 +15,7 @@ namespace DataAccessLayer
     
     public partial class Entities : DbContext
     {
-        public Entities() 
+        public Entities()
             : base("name=Entities")
         {
         }
@@ -32,5 +32,7 @@ namespace DataAccessLayer
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Attachment> Attachments { get; set; }
     }
 }
