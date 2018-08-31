@@ -6,7 +6,7 @@
             <asp:UpdatePanel runat="server">
                 <ContentTemplate>
                     <asp:HiddenField ID="Hfd_ID" runat="server" />
-                    <asp:ListView ID="LvwDocuments" runat="server" DataKeyNames="ID" DataSourceID="SqlDataSource1" GroupItemCount="4" OnItemCommand="LvwDocuments_ItemCommand">
+                    <asp:ListView ID="LvwDocuments" runat="server" DataKeyNames="docID" DataSourceID="SqlDataSource1" GroupItemCount="4" OnItemCommand="LvwDocuments_ItemCommand">
                         <EmptyDataTemplate>
                             <table runat="server" style="">
                                 <tr>
@@ -26,18 +26,18 @@
                             <td runat="server" style="">
                                 <div class="card text-center mb-3 mr-3" style="width: 18rem; height: 25rem;">
                                     <div class="card-header">
-                                        <asp:Label ID="titleLabel" runat="server" Text="Thesis" CssClass="h5" />
+                                        <asp:Label ID="titleLabel" runat="server" Text='<%# Eval("Category") %>' CssClass="h5" />
                                     </div>
                                     <div class="card-body text-center mb-0">
                                         <img src="Images/placeholder286x180.svg" class="card-img-top img-thumbnail" />
                                         <p class="h6 align-middle mt-3 mb-0">
-                                            <asp:Label ID="authorLabel" runat="server" Text='<%# Eval("Name") %>' />
+                                            <asp:Label ID="authorLabel" runat="server" Text='<%# Eval("Document") %>' />
                                         </p>
                                     </div>
                                     <div class="card-footer text-muted">
                                         <div class="my-1">
                                             <asp:Button ID="BtnViewDocument" runat="server" Text="View Details" CssClass="btn btn-library-10 btn-block"
-                                                CommandArgument='<%# Eval("ID") %>' CausesValidation="false" data-toggle="modal" data-target="#documentModal" />
+                                                CommandArgument='<%# Eval("docID") %>' CausesValidation="false" data-toggle="modal" data-target="#documentModal" />
                                         </div>
                                     </div>
                                 </div>
@@ -70,7 +70,12 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Thesis</h5>
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="Lbl_Catgory" runat="server" Text='<%# GetCategory() %>' CssClass="h5"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -121,5 +126,5 @@
             <asp:ControlParameter ControlID="Hfd_ID" Name="ID" PropertyName="Value" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Documents]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [DocumentMetaPlain]"></asp:SqlDataSource>
 </asp:Content>

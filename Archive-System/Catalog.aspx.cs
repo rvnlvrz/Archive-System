@@ -25,6 +25,7 @@ namespace Archive_System
             Hfd_ID.Value = e.CommandArgument.ToString();
             Lbl_Authors.DataBind();
             Btn_DownloadAttachment.DataBind();
+            Lbl_Catgory.DataBind();
         }
 
         private void DownloadDocument(int documentID)
@@ -99,6 +100,31 @@ namespace Archive_System
             Response.AddHeader("content-disposition", "attachment;filename=" + fileName);
             Response.BinaryWrite(bytes);
             Response.End();
+        }
+
+        protected string GetCategory()
+        {
+            int currID = Convert.ToInt32(Hfd_ID.Value);
+            string query = "SELECT Category FROM DocumentMeta WHERE docID = @id";
+            string result = "";
+
+            using (SqlConnection conn = new SqlConnection(connString))
+            {
+                conn.Open();
+                using (SqlCommand comm = new SqlCommand(query, conn))
+                {
+                    comm.Parameters.Add("@id", SqlDbType.Int).Value = currID;
+                    using (SqlDataReader dr = comm.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            result = Convert.ToString(dr["Category"]);
+                        }
+                    }
+                }
+            }
+
+            return result;
         }
 
         protected string GetAuthors()

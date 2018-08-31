@@ -31,6 +31,24 @@ namespace Archive_System {
         protected global::System.Web.UI.WebControls.ListView LvwDocuments;
         
         /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        
+        /// <summary>
+        /// Lbl_Catgory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_Catgory;
+        
+        /// <summary>
         /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
