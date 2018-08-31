@@ -22,12 +22,14 @@ namespace DataAccessLayer
         }
     
         public int ID { get; set; }
+        public int CategoryID { get; set; }
         public string Name { get; set; }
         public byte[] File { get; set; }
         public string ContentType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Author> Authors { get; set; }
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Attachment> Attachments { get; set; }
     }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/31/2018 19:32:05
+-- Date Created: 08/31/2018 19:37:43
 -- Generated from EDMX file: C:\Users\Arvin\source\repos\Archive-System\DataAccessLayer\ArchiveModel.edmx
 -- --------------------------------------------------
 
@@ -43,6 +43,12 @@ IF OBJECT_ID(N'[dbo].[FK_AuthorUser]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_AuthorDocument]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Authors] DROP CONSTRAINT [FK_AuthorDocument];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DocumentCategory]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Documents] DROP CONSTRAINT [FK_DocumentCategory];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DocumentAttachment]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Attachments] DROP CONSTRAINT [FK_DocumentAttachment];
 GO
 
 -- --------------------------------------------------
@@ -151,6 +157,7 @@ GO
 -- Creating table 'Documents'
 CREATE TABLE [dbo].[Documents] (
     [ID] int IDENTITY(1,1) NOT NULL,
+    [CategoryID] int  NOT NULL,
     [Name] nvarchar(200)  NOT NULL,
     [File] varbinary(max)  NOT NULL,
     [ContentType] nvarchar(80)  NOT NULL
@@ -175,7 +182,7 @@ GO
 -- Creating table 'Attachments'
 CREATE TABLE [dbo].[Attachments] (
     [ID] int IDENTITY(1,1) NOT NULL,
-    [Parent] int  NOT NULL,
+    [DocumentID] int  NOT NULL,
     [Name] nvarchar(200)  NOT NULL,
     [File] varbinary(max)  NOT NULL,
     [ContentType] nvarchar(80)  NOT NULL
@@ -374,19 +381,34 @@ ON [dbo].[Authors]
     ([DocumentID]);
 GO
 
--- Creating foreign key on [Parent] in table 'Attachments'
+-- Creating foreign key on [CategoryID] in table 'Documents'
+ALTER TABLE [dbo].[Documents]
+ADD CONSTRAINT [FK_DocumentCategory]
+    FOREIGN KEY ([CategoryID])
+    REFERENCES [dbo].[Categories]
+        ([ID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DocumentCategory'
+CREATE INDEX [IX_FK_DocumentCategory]
+ON [dbo].[Documents]
+    ([CategoryID]);
+GO
+
+-- Creating foreign key on [DocumentID] in table 'Attachments'
 ALTER TABLE [dbo].[Attachments]
-ADD CONSTRAINT [FK_AttachmentDocument]
-    FOREIGN KEY ([Parent])
+ADD CONSTRAINT [FK_DocumentAttachment]
+    FOREIGN KEY ([DocumentID])
     REFERENCES [dbo].[Documents]
         ([ID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_AttachmentDocument'
-CREATE INDEX [IX_FK_AttachmentDocument]
+-- Creating non-clustered index for FOREIGN KEY 'FK_DocumentAttachment'
+CREATE INDEX [IX_FK_DocumentAttachment]
 ON [dbo].[Attachments]
-    ([Parent]);
+    ([DocumentID]);
 GO
 
 -- --------------------------------------------------

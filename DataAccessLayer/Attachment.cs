@@ -15,7 +15,7 @@ namespace DataAccessLayer
     public partial class Attachment
     {
         public int ID { get; set; }
-        public int Parent { get; set; }
+        public int DocumentID { get; set; }
         public string Name { get; set; }
         public byte[] File { get; set; }
         public string ContentType { get; set; }

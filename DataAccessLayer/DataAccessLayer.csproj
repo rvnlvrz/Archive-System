@@ -65,7 +65,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Attachment.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Author.cs">
+      <DependentUpon>ArchiveModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
       <DependentUpon>ArchiveModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Document.cs">

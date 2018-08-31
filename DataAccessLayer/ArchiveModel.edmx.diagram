@@ -21,8 +21,9 @@
         <AssociationConnector Association="ArchiveModel.AuthorUser" />
         <AssociationConnector Association="ArchiveModel.AuthorDocument" />
         <EntityTypeShape EntityType="ArchiveModel.Category" Width="1.5" PointX="9.125" PointY="3.375" />
-        <EntityTypeShape EntityType="ArchiveModel.Attachment" Width="1.5" PointX="9.125" PointY="5" />
-        <AssociationConnector Association="ArchiveModel.AttachmentDocument" />
+        <EntityTypeShape EntityType="ArchiveModel.Attachment" Width="1.5" PointX="9.125" PointY="5.125" />
+        <AssociationConnector Association="ArchiveModel.DocumentCategory" />
+        <AssociationConnector Association="ArchiveModel.DocumentAttachment" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
