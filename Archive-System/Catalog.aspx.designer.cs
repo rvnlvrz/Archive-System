@@ -22,6 +22,24 @@ namespace Archive_System {
         protected global::System.Web.UI.WebControls.ListView LvwDocuments;
         
         /// <summary>
+        /// FVW_DocumentDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView FVW_DocumentDetails;
+        
+        /// <summary>
+        /// SDT_DocumentData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SDT_DocumentData;
+        
+        /// <summary>
         /// SqlDataSource1 control.
         /// </summary>
         /// <remarks>

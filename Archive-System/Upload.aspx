@@ -24,7 +24,6 @@
                                                 <asp:Label ID="Label1" runat="server" Text="Second Author" CssClass="mr-1 mb-3 text-uppercase lead"></asp:Label>
                                             </div>
                                             <div class="col-sm-6 form-check">
-                                                <asp:CheckBox ID="CheckBox1" runat="server" Text="Not Applicable" CssClass="form-check-input" TextAlign="Right" />
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -44,11 +43,27 @@
                                                 <asp:TextBox ID="Tbx_AuthC_Last" runat="server" CssClass="form-control" placeholder="last name"></asp:TextBox>
                                             </div>
                                         </div>
+                                        <asp:Label ID="Label3" runat="server" Text="Type" CssClass="mr-1 mb-3 text-uppercase lead"></asp:Label>
+                                        <asp:DropDownList ID="DRP_Category" runat="server" CssClass="custom-select">
+                                            <asp:ListItem Selected="True" Value="1">Thesis</asp:ListItem>
+                                            <asp:ListItem Value="2">Capstone</asp:ListItem>
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="col-sm-6">
-                                        <asp:Label ID="lbl_uploadBox" runat="server" Text="Document Upload" CssClass="lead col-form-label text-uppercase"></asp:Label>
-                                        <div class="wrap border border-danger rounded">
-                                            <asp:FileUpload ID="FileUpload_Documents" runat="server" />
+                                        <div class="row">
+                                            <div class="col-sm-12 mb-1">
+                                                <asp:Label ID="Lbl_uploadBox" runat="server" Text="Document Upload" CssClass="lead col-form-label text-uppercase"></asp:Label>
+                                                <div class="wrap border border-danger rounded">
+                                                    <asp:FileUpload ID="FileUpload_Documents" runat="server" />
+                                                </div>
+                                            </div>
+                                            <div class="d-block w-100"></div>
+                                            <div class="col-sm-12">
+                                                <asp:Label ID="Lbl_attachmentBox" runat="server" Text="Attachment Upload" CssClass="lead col-form-label text-uppercase"></asp:Label>
+                                                <div class="wrap border border-danger rounded">
+                                                    <asp:FileUpload ID="FileUpload_Attachments" runat="server" />
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="mt-2 text-right">
                                             <asp:Button ID="Btn_Upload" runat="server" Text="Upload" CssClass="btn btn-primary" OnClick="Btn_Upload_Click" />

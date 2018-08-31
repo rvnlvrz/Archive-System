@@ -40,7 +40,7 @@ namespace Archive_System
                         {
                             bytes = (byte[])reader["File"];
                             fileName = Convert.ToString(reader["Name"]);
-                            contentType = Convert.ToString(reader["Extension"]);
+                            contentType = Convert.ToString(reader["ContentType"]);
                         }
                     }
                 }

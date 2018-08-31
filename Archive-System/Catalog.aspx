@@ -21,7 +21,7 @@
                 </GroupTemplate>
                 <ItemTemplate>
                     <td runat="server" style="">
-                        <div class="card text-center mb-3 mr-3" style="width: 18rem;height:25rem;">
+                        <div class="card text-center mb-3 mr-3" style="width: 18rem; height: 25rem;">
                             <div class="card-header">
                                 <asp:Label ID="titleLabel" runat="server" Text="Thesis" CssClass="h5" />
                             </div>
@@ -60,5 +60,27 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="documentModal" tabindex="-1" role="dialog" aria-labelledby="documentModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Thesis</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <asp:FormView ID="FVW_DocumentDetails" runat="server"></asp:FormView>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <asp:SqlDataSource ID="SDT_DocumentData" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" ProviderName="<%$ ConnectionStrings:DefaultConnection.ProviderName %>"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Documents]"></asp:SqlDataSource>
 </asp:Content>

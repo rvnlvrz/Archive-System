@@ -49,15 +49,6 @@ namespace Archive_System {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// CheckBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
-        
-        /// <summary>
         /// Tbx_AuthB_First control.
         /// </summary>
         /// <remarks>
@@ -103,13 +94,31 @@ namespace Archive_System {
         protected global::System.Web.UI.WebControls.TextBox Tbx_AuthC_Last;
         
         /// <summary>
-        /// lbl_uploadBox control.
+        /// Label3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_uploadBox;
+        protected global::System.Web.UI.WebControls.Label Label3;
+        
+        /// <summary>
+        /// DRP_Category control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DRP_Category;
+        
+        /// <summary>
+        /// Lbl_uploadBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_uploadBox;
         
         /// <summary>
         /// FileUpload_Documents control.
@@ -119,6 +128,24 @@ namespace Archive_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload FileUpload_Documents;
+        
+        /// <summary>
+        /// Lbl_attachmentBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Lbl_attachmentBox;
+        
+        /// <summary>
+        /// FileUpload_Attachments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload_Attachments;
         
         /// <summary>
         /// Btn_Upload control.
