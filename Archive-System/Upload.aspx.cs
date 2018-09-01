@@ -17,7 +17,8 @@ namespace Archive_System
         string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ClientScript.RegisterStartupScript(GetType(), "setActiveHome",
+                "$('#upload').addClass('active');", true);
         }
 
         protected void Btn_Upload_Click(object sender, EventArgs e)

@@ -11,14 +11,15 @@ using System.Configuration;
 
 namespace Archive_System
 {
-	public partial class Catalog : System.Web.UI.Page
-	{
+    public partial class Catalog : System.Web.UI.Page
+    {
         string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
-		{
-
-		}
+        {
+            ClientScript.RegisterStartupScript(GetType(), "setActiveHome",
+                "$('#catalog').addClass('active');", true);
+        }
 
         protected void LvwDocuments_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
@@ -133,13 +134,13 @@ namespace Archive_System
             string query = "SELECT * FROM DocumentMeta WHERE docID = @id";
             string result = "";
             List<string> authors = new List<string>(3);
-            using(SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
-                using(SqlCommand comm = new SqlCommand(query, conn))
+                using (SqlCommand comm = new SqlCommand(query, conn))
                 {
                     comm.Parameters.Add("@id", SqlDbType.Int).Value = currID;
-                    using(SqlDataReader dr = comm.ExecuteReader())
+                    using (SqlDataReader dr = comm.ExecuteReader())
                     {
                         while (dr.Read())
                         {
@@ -149,7 +150,7 @@ namespace Archive_System
                 }
             }
 
-            foreach(string name in authors)
+            foreach (string name in authors)
             {
                 result += $"{name}, ";
             }

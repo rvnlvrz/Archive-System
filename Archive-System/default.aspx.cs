@@ -11,7 +11,8 @@ namespace Archive_System
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
-		}
+            ClientScript.RegisterStartupScript(GetType(), "setActiveHome",
+                "$('#home').addClass('active');", true);
+        }
 	}
 }
