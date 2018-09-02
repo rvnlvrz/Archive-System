@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #22272d;
+    background-color: rgba(0, 0, 0, 0.85);
     font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
     font-size: 13px;
     font-style: normal;
@@ -126,13 +126,13 @@
 }
 
     .btn-library:hover {
-        background-color: #A52A2A;
+        background-color: #B22222;
         border-color: #B22222;
         color: #fff;
     }
 
-    .btn-library:focus, .btn-library.focus {
-        box-shadow: 0 0 0 0.2rem rgba(51, 0, 128, 0.5);
+    .btn-library:focus, .btn-library.focus, .btn-library10:focus {
+        box-shadow: 0 0 0 0.2rem rgba(128, 0, 0, 0.5);
     }
 
     .btn-library.disabled, .btn-library:disabled {
@@ -143,14 +143,14 @@
 
     .btn-library:not(:disabled):not(.disabled):active, .btn-library:not(:disabled):not(.disabled).active,
     .show > .btn-library.dropdown-toggle {
-        background-color: #1f004c;
-        border-color: #1a003f;
+        background-color: #800000;
+        border-color: #8B0000;
         color: #fff;
     }
 
         .btn-library:not(:disabled):not(.disabled):active:focus, .btn-library:not(:disabled):not(.disabled).active:focus,
         .show > .btn-library.dropdown-toggle:focus {
-            box-shadow: 0 0 0 0.2rem rgba(51, 0, 128, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(128, 0, 0, 0.5);
         }
 
 ::selection {
@@ -159,22 +159,22 @@
 }
 
 .btn-library-10 {
-    background-color: #330080;
-    border-color: #330080;
+    background-color: #8B0000;
+    border-color: #8B0000;
     color: #fff;
 }
 
-    .btn-library-10:hover {
-        background-color: #240059;
-        border-color: #1f004c;
+    .btn-library-10:hover, .btn-library-10:hover {
+        background-color: #B22222;
+        border-color: #B22222;
         color: #fff;
     }
 
     .btn-library-10:focus, .btn-library-10.focus {
-        box-shadow: 0 0 0 0.2rem rgba(51, 0, 128, 0.5);
+        box-shadow: 0 0 0 0.2rem rgba(128, 0, 0, 0.5);
     }
 
-    .btn-library-10.disabled, .btn-library-10:disabled {
+    .btn-library-10.disabled, .btn-library:disabled {
         background-color: #330080;
         border-color: #330080;
         color: #fff;
@@ -182,14 +182,14 @@
 
     .btn-library-10:not(:disabled):not(.disabled):active, .btn-library-10:not(:disabled):not(.disabled).active,
     .show > .btn-library-10.dropdown-toggle {
-        background-color: #1f004c;
-        border-color: #1a003f;
+        background-color: #800000;
+        border-color: #8B0000;
         color: #fff;
     }
 
         .btn-library-10:not(:disabled):not(.disabled):active:focus, .btn-library-10:not(:disabled):not(.disabled).active:focus,
         .show > .btn-library-10.dropdown-toggle:focus {
-            box-shadow: 0 0 0 0.2rem rgba(51, 0, 128, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(128, 0, 0, 0.5);
         }
 
 #footer-twitter, #footer-facebook {
@@ -204,20 +204,6 @@
     #footer-facebook:hover:before {
         color: #3b5998;
     }
-
-
-
-.btn-library:hover {
-    background-color: #3d009b;
-    border-color: #3d009b;
-    color: #fff;
-}
-
-.btn-library-10:hover {
-    background-color: #3d009b;
-    border-color: #3d009b;
-    color: #fff;
-}
 
 .more {
     color: #4a4f55 !important;
@@ -440,7 +426,8 @@ select.form-control:focus {
 }
 
 .bg-mapuan-gold {
-    background-color: #B8860B;
+    background-color: #B8860B !important;
+    border-color: #B8860B !important;
 }
 
 .bg-mapuan-red {
@@ -457,6 +444,7 @@ select.form-control:focus {
 .parallax {
     background-image: url('../Images/04-tinted.jpg');
     height: 100%;
+    margin: 0 !important;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -538,5 +526,10 @@ footer ul li, .taber {
     footer > .container {
         padding-left: 0;
         padding-right: 0px;
+    }
+
+    #home-header {
+        text-align: center;
+        padding-bottom: 1rem;
     }
 }

@@ -13,7 +13,7 @@
     </asp:PlaceHolder>
 
     <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="Content/fontAwseome.all.min.css" rel="stylesheet" />
+    <%--<link href="Content/fontAwseome.all.min.css" rel="stylesheet" />--%>
     <link href="Content/academicons.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -41,14 +41,14 @@
 
         <div class="lib-header container-fluid" id="header" runat="server">
             <div class="row px-5">
-                <div class="col-md-8 align-middle h2 text-white my-0 px-0">
+                <div class="col-md-8 align-middle h2 text-white my-0 px-0" id="home-header">
                     <span class="fa fa-graduation-cap"></span>&nbsp;The Cardinal Archives
                 </div>
                 <div class="col-md-4 text-right">
                     <asp:Panel ID="Panel1" runat="server" CssClass="input-group w-75 mx-auto">
                         <asp:TextBox ID="TbxTopFind" runat="server" CssClass="form-control form-control-lg" Font-Size="14px" placeholder="search this site"></asp:TextBox>
                         <div class="input-group-append">
-                            <asp:LinkButton ID="BtnTopFind" runat="server" CssClass="btn btn-git btn-lg"><i class="fa fa-search"></i></asp:LinkButton>
+                            <asp:LinkButton ID="BtnTopFind" runat="server" CssClass="btn btn-git btn-lg" OnClick="BtnTopFind_Click"><i class="fa fa-search"></i></asp:LinkButton>
                         </div>
                     </asp:Panel>
                 </div>
@@ -73,7 +73,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="/" class="navbar-brand mx-auto d-block text-center order-0 order-md-1 w-25" id="home-nav-brand"></a>
+                <a href="/" class="navbar-brand text-center" id="home-nav-brand"></a>
                 <div class="navbar-collapse collapse dual-nav w-50 order-2">
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user"></i></a></li>
@@ -98,12 +98,9 @@
                             </div>
                             <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
                                 <ul class="bullet-less">
-                                    <li>Donec</li>
-                                    <li>dictum</li>
-                                    <li>est</li>
-                                    <li>semper</li>
-                                    <li>nulla</li>
-
+                                    <li><a href="Default.aspx">Home</a></li>
+                                    <li><a href="Catalog.aspx">Catalog</a></li>
+                                    <li><a href="Upload.aspx">Upload</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -113,12 +110,10 @@
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                 <ul class="bullet-less">
-                                    <li>euismod</li>
-                                    <li>mollis</li>
-                                    <li>Nam</li>
-                                    <li>leo</li>
-                                    <li>libero</li>
-
+                                    <li><a href="#">Mapúa IT Center</a></li>
+                                    <li><a href="#">Mapúa Techserv</a></li>
+                                    <li><a href="#">Mapúa Txt</a></li>
+                                    <li><a href="#">PACU</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -129,12 +124,8 @@
 
                             <div id="collapsetwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                 <ul class="bullet-less">
-                                    <li>ullamcorper</li>
-                                    <li>consequat</li>
-                                    <li>tincidunt</li>
-                                    <li>non</li>
-                                    <li>rutrum</li>
-
+                                    <li><a href="#">Malayan Colleges Laguna</a></li>
+                                    <li><a href="#">Malayan High School of Science</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -145,12 +136,8 @@
                             </div>
                             <div id="collapsethree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                 <ul class="bullet-less">
-                                    <li>ut</li>
-                                    <li>justo</li>
-                                    <li>Cras</li>
-                                    <li>purus</li>
-                                    <li>tellus</li>
-
+                                    <li><a href="#">Jobs at Mapua</a></li>
+                                    <li><a href="#">Careerlink</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -161,9 +148,6 @@
                     <div class="row justify-content-between">
                         <div class="col-md-6 col-sm-6 text-white">
                             Mapua University
-                        </div>
-                        <div class="col-md-6 col-sm-6 text-right text-white">
-                            Dynamic Link
                         </div>
                     </div>
                 </div>

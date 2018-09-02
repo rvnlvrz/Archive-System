@@ -14,5 +14,10 @@ namespace Archive_System
             ClientScript.RegisterStartupScript(GetType(), "setActiveHome",
                 "$('#home').addClass('active');", true);
         }
-	}
+
+        protected void BtnSearchDocs_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"~/Search.aspx?field={DrpField.SelectedValue}&term={TbxSearchTerms.Text}");
+        }
+    }
 }

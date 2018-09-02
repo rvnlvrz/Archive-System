@@ -204,5 +204,95 @@ namespace Archive_System
             int currID = Convert.ToInt32(Hfd_ID.Value);
             DownloadAttachment(currID);
         }
+
+        protected void Drp_Filter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Drp_Filter.SelectedValue == "0")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain GROUP BY docID, Category, " +
+                    "Document ORDER BY Category";
+            }
+            else if (Drp_Filter.SelectedValue == "1")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE Category = 'Thesis' " +
+                    "GROUP BY docID, Category, Document ORDER BY Document";
+            }
+            else if (Drp_Filter.SelectedValue == "2")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE Category = 'Capstone' " +
+                    "GROUP BY docID, Category, Document ORDER BY Document";
+            }
+            else
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE docID IN (SELECT DocumentID FROM Attachments) " +
+                    "GROUP BY docID, Category, Document ORDER BY Category";
+            }
+
+
+            //SqlDataSource1.Select(null);
+            SqlDataSource1.DataBind();
+            LvwDocuments.DataBind();
+            
+        }
+
+        protected string CleanTitle(object title)
+        {
+            string t_title = title.ToString();
+            string result = t_title;
+
+            try
+            {
+                result = t_title.Substring(0, t_title.LastIndexOf("."));
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return result;
+        }
+
+        protected void DataPagerProducts_PreRender(object sender, EventArgs e)
+        {
+            if (Drp_Filter.SelectedValue == "0")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain GROUP BY docID, Category, " +
+                    "Document ORDER BY Category";
+            }
+            else if (Drp_Filter.SelectedValue == "1")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE Category = 'Thesis' " +
+                    "GROUP BY docID, Category, Document ORDER BY Document";
+            }
+            else if (Drp_Filter.SelectedValue == "2")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE Category = 'Capstone' " +
+                    "GROUP BY docID, Category, Document ORDER BY Document";
+            }
+            else
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE docID IN (SELECT DocumentID FROM Attachments) " +
+                    "GROUP BY docID, Category, Document ORDER BY Category";
+            }
+
+            SqlDataSource1.DataBind();
+            LvwDocuments.DataBind();
+        }
     }
 }

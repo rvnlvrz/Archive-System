@@ -22,6 +22,24 @@ namespace Archive_System {
         protected global::System.Web.UI.WebControls.HiddenField Hfd_ID;
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// Drp_Filter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList Drp_Filter;
+        
+        /// <summary>
         /// LvwDocuments control.
         /// </summary>
         /// <remarks>
