@@ -81,18 +81,18 @@
                                 <div id="itemPlaceholderContainer" runat="server" style="">
                                     <span runat="server" id="itemPlaceholder" />
                                 </div>
-                            <div class="wrap text-center">
-                                <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="Lvw_Results"
-                                    PageSize="8">
-                                    <Fields>
-                                        <asp:NextPreviousPagerField ShowFirstPageButton="False" ShowNextPageButton="False"
-                                            ButtonCssClass="btn btn-library-10 text-white" PreviousPageText="<" FirstPageText="|<" />
-                                        <asp:NumericPagerField NumericButtonCssClass="btn btn-secondary" CurrentPageLabelCssClass="btn btn-success bg-mapuan-gold" />
-                                        <asp:NextPreviousPagerField ShowLastPageButton="False" ShowPreviousPageButton="False"
-                                            ButtonCssClass="btn btn-library-10 text-white" NextPageText=">" LastPageText=">|" />
-                                    </Fields>
-                                </asp:DataPager>
-                            </div>
+                                <div class="wrap text-center">
+                                    <asp:DataPager ID="DataPagerProducts" runat="server" PagedControlID="Lvw_Results"
+                                        PageSize="8">
+                                        <Fields>
+                                            <asp:NextPreviousPagerField ShowFirstPageButton="False" ShowNextPageButton="False"
+                                                ButtonCssClass="btn btn-library-10 text-white" PreviousPageText="<" FirstPageText="|<" />
+                                            <asp:NumericPagerField NumericButtonCssClass="btn btn-secondary" CurrentPageLabelCssClass="btn btn-success bg-mapuan-gold" />
+                                            <asp:NextPreviousPagerField ShowLastPageButton="False" ShowPreviousPageButton="False"
+                                                ButtonCssClass="btn btn-library-10 text-white" NextPageText=">" LastPageText=">|" />
+                                        </Fields>
+                                    </asp:DataPager>
+                                </div>
                             </LayoutTemplate>
                         </asp:ListView>
                     </ContentTemplate>
@@ -129,6 +129,10 @@
                                         <img src="Images/placeholder286x180.svg" class="img-thumbnail" />
                                         <div class="d-block w-100 mb-3"></div>
                                         <asp:Label ID="documentNameLabel" runat="server" CssClass="lead" Text='<%# CleanTitle(Eval("documentName")) %>' />
+                                        <div class="mt-2">
+                                            <i class="fa fa-calendar lead" aria-hidden="true"></i>&nbsp;
+                                            <asp:Label ID="Label2" runat="server" CssClass="lead" Text='<%# Eval("UploadDate", "{0:d}") %>' />
+                                        </div>
                                     </div>
                                 </ItemTemplate>
                             </asp:FormView>
@@ -156,7 +160,7 @@
             </div>
         </div>
     </div>
-    <asp:SqlDataSource ID="SDT_DocumentData" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Name], [documentName], [attachmentName] FROM [DocumentSets] WHERE ([ID] = @ID)">
+    <asp:SqlDataSource ID="SDT_DocumentData" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Name], [documentName], [attachmentName], [UploadDate] FROM [DocumentSets] WHERE ([ID] = @ID)">
         <SelectParameters>
             <asp:ControlParameter ControlID="Hfd_ID" Name="ID" PropertyName="Value" Type="Int32" />
         </SelectParameters>

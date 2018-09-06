@@ -23,7 +23,7 @@
                             </asp:DropDownList>
                         </div>
                     </div>
-                    <asp:ListView ID="LvwDocuments" runat="server" DataKeyNames="docID" DataSourceID="SqlDataSource1" GroupItemCount="4" 
+                    <asp:ListView ID="LvwDocuments" runat="server" DataKeyNames="docID" DataSourceID="SqlDataSource1" GroupItemCount="4"
                         OnItemCommand="LvwDocuments_ItemCommand">
                         <EmptyDataTemplate>
                             <table runat="server" style="">
@@ -68,7 +68,7 @@
                                     <td runat="server">
                                         <table id="groupPlaceholderContainer" runat="server" border="0" style="">
                                             <tr id="groupPlaceholder" runat="server">
-                                            </tr>
+                                        s    </tr>
                                         </table>
                                     </td>
                                 </tr>
@@ -123,6 +123,10 @@
                                         <img src="Images/placeholder286x180.svg" class="img-thumbnail" />
                                         <div class="d-block w-100 mb-3"></div>
                                         <asp:Label ID="documentNameLabel" runat="server" CssClass="lead font-weight-bold" Text='<%# CleanTitle(Eval("documentName")) %>' />
+                                        <div class="mt-2">
+                                            <i class="fa fa-calendar lead" aria-hidden="true"></i>&nbsp;
+                                            <asp:Label ID="Label2" runat="server" CssClass="lead" Text='<%# Eval("UploadDate", "{0:d}") %>' />
+                                        </div>
                                     </div>
                                 </ItemTemplate>
                             </asp:FormView>
@@ -150,7 +154,7 @@
         </div>
     </div>
 
-    <asp:SqlDataSource ID="SDT_DocumentData" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Name], [documentName], [attachmentName] FROM [DocumentSets] WHERE ([ID] = @ID)">
+    <asp:SqlDataSource ID="SDT_DocumentData" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT [Name], [documentName], [attachmentName], [UploadDate] FROM [DocumentSets] WHERE ([ID] = @ID)">
         <SelectParameters>
             <asp:ControlParameter ControlID="Hfd_ID" Name="ID" PropertyName="Value" Type="Int32" />
         </SelectParameters>

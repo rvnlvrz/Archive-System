@@ -229,7 +229,19 @@ namespace Archive_System
 
         private string CleanString(string input)
         {
-            return input.Replace("'", "''");
+            string output = "";
+
+            try
+            {
+                output = input.Replace("'", "''");
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return output;
         }
 
         protected void BtnSearchDocuments_Click(object sender, EventArgs e)
