@@ -95,7 +95,6 @@
         <div class="body-content bg-light">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-
         </div>
 
         <footer id="footer_primary" runat="server">
