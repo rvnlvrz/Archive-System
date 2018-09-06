@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="form-group">
                                         <asp:Button ID="BtnContact" runat="server" Text="Register Now" CssClass="btn btn-info form-control"
-                                            Font-Size="14px" />
+                                            Font-Size="14px" PostBackUrl="~/Membership/Register.aspx" />
                                     </div>
                                     <div class="form-group text-center">
                                         <p>
