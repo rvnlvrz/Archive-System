@@ -17,7 +17,6 @@ namespace Archive_System
             // Verify user
             if (System.Web.Security.Membership.ValidateUser(LoginControl.UserName, LoginControl.Password))
             {
-                e.Authenticated = true;
                 FormsAuthentication.RedirectFromLoginPage(LoginControl.UserName, LoginControl.RememberMeSet);
             }
         }
