@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/31/2018 19:37:43
+-- Date Created: 09/02/2018 18:27:52
 -- Generated from EDMX file: C:\Users\Arvin\source\repos\Archive-System\DataAccessLayer\ArchiveModel.edmx
 -- --------------------------------------------------
 
@@ -160,7 +160,8 @@ CREATE TABLE [dbo].[Documents] (
     [CategoryID] int  NOT NULL,
     [Name] nvarchar(200)  NOT NULL,
     [File] varbinary(max)  NOT NULL,
-    [ContentType] nvarchar(80)  NOT NULL
+    [ContentType] nvarchar(80)  NOT NULL,
+    [UploadDate] datetime  NOT NULL
 );
 GO
 

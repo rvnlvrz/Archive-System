@@ -134,6 +134,7 @@
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
     <Property Name="File" Type="varbinary(max)" Nullable="false" />
     <Property Name="ContentType" Type="nvarchar" Nullable="false" MaxLength="80" />
+    <Property Name="UploadDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Authors">
     <Key>
@@ -508,6 +509,7 @@
           <NavigationProperty Name="Authors" Relationship="ArchiveModel.AuthorDocument" FromRole="Document" ToRole="Author" />
           <NavigationProperty Name="Category" Relationship="ArchiveModel.DocumentCategory" FromRole="Document" ToRole="Category" />
           <NavigationProperty Name="Attachments" Relationship="ArchiveModel.DocumentAttachment" FromRole="Document" ToRole="Attachment" />
+          <Property Name="UploadDate" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -669,6 +671,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="File" ColumnName="File" />
           <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

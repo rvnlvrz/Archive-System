@@ -50,6 +50,14 @@
     <Compile Include="Application.cs">
       <DependentUpon>ArchiveModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Archive-System.cs">
+      <DependentUpon>Archive-System.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Archive-System.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Archive-System.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ArchiveModel.Context.cs">
       <DependentUpon>ArchiveModel.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -84,6 +92,11 @@
       <DependentUpon>ArchiveModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>ArchiveModel.tt</DependentUpon>
     </Compile>
@@ -117,7 +130,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="Archive-System.xsc">
+      <DependentUpon>Archive-System.xsd</DependentUpon>
+    </None>
+    <None Include="Archive-System.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Archive-System.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Archive-System.xss">
+      <DependentUpon>Archive-System.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
