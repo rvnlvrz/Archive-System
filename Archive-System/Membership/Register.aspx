@@ -36,7 +36,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <asp:TextBox ID="UserName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox ID="UserName" runat="server" CssClass="form-control" placeholder="User Name"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="User Name is required." ToolTip="User Name is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                                             </div>
                                             <div class="form-row">
