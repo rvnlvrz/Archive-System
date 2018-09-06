@@ -198,7 +198,7 @@ namespace Archive_System
                         {
                             bytes = (byte[])reader["attachment"];
                             fileName = Convert.ToString(reader["attachmentName"]);
-                            contentType = Convert.ToString(reader["attachmentType"]);
+                            contentType = Convert.ToString(reader["atachmentType"]);
                         }
                     }
                 }

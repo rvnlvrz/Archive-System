@@ -68,7 +68,7 @@
                                     <td runat="server">
                                         <table id="groupPlaceholderContainer" runat="server" border="0" style="">
                                             <tr id="groupPlaceholder" runat="server">
-                                        s    </tr>
+                                            </tr>
                                         </table>
                                     </td>
                                 </tr>
