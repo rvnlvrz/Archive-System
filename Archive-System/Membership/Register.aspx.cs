@@ -12,6 +12,7 @@ namespace Archive_System.Membership
         protected void Page_Load(object sender, EventArgs e)
         {
             Master.HideFooterHeader();
+            CreateUserWizard.MoveTo(CreateUserWizardStep1);
         }
 
         protected void CreateUserWizard_CreatedUser(object sender, EventArgs e)
@@ -25,9 +26,11 @@ namespace Archive_System.Membership
             if (CreateUserWizard.CreateUserStep.ContentTemplateContainer.FindControl("UserName") is TextBox userName)
             {
                 var newUser = System.Web.Security.Membership.GetUser(userName.Text);
-                var newUserId = (Guid) newUser.ProviderUserKey;
+                var newUserId = (Guid)newUser.ProviderUserKey;
                 _userLogic.UpdateName(firstName.Text, middleName.Text, lastName.Text, newUserId);
             }
+
+            CreateUserWizard.MoveTo(CreateUserWizardStep1);
         }
     }
 }

@@ -63,14 +63,6 @@
                                         </CustomNavigationTemplate>
                                     </asp:CreateUserWizardStep>
                                     <asp:CompleteWizardStep ID="CompleteWizardStep1" runat="server">
-                                        <ContentTemplate>
-                                            <div class="col-12 text-center">
-                                                Your account has been successfully created.
-                                            </div>
-                                            <div class="text-right mx-auto">
-                                                <asp:Button ID="ContinueButton" runat="server" CssClass="btn btn-success" CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard"/>
-                                            </div>
-                                        </ContentTemplate>
                                     </asp:CompleteWizardStep>
                                 </WizardSteps>
                             </asp:CreateUserWizard>
