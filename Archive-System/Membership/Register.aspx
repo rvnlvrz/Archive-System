@@ -16,7 +16,7 @@
                             <h2 class="card-title text-center">
                                 <strong>Sign Up</strong>
                             </h2>
-                            <asp:CreateUserWizard ID="CreateUserWizard" runat="server" CssClass="w-100" CreateUserButtonText="Register" OnCreatedUser="CreateUserWizard_CreatedUser" ActiveStepIndex="1">
+                            <asp:CreateUserWizard ID="CreateUserWizard" runat="server" CssClass="w-100" CreateUserButtonText="Register" OnCreatedUser="CreateUserWizard_CreatedUser" ActiveStepIndex="1" ContinueDestinationPageUrl="~/Default.aspx">
                                 <CreateUserButtonStyle CssClass="btn btn-library-10 form-control form-control-lg"/>
                                 <WizardSteps>
                                     <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
