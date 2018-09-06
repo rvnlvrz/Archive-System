@@ -17,7 +17,7 @@
                                 <strong>Sign Up</strong>
                             </h2>
                             <asp:CreateUserWizard ID="CreateUserWizard" runat="server" CssClass="w-100" CreateUserButtonText="Register" OnCreatedUser="CreateUserWizard_CreatedUser" ActiveStepIndex="1" ContinueDestinationPageUrl="~/Default.aspx">
-                                <CreateUserButtonStyle CssClass="btn btn-library-10 form-control form-control-lg"/>
+                                <CreateUserButtonStyle CssClass="btn btn-library-10 form-control form-control-lg" />
                                 <WizardSteps>
                                     <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
                                         <ContentTemplate>
@@ -59,10 +59,18 @@
                                             </div>
                                         </ContentTemplate>
                                         <CustomNavigationTemplate>
-                                            <asp:Button ID="StepNextButton" runat="server" CommandName="MoveNext" CssClass="btn btn-library-10 form-control form-control-lg" Text="Register"/>
+                                            <asp:Button ID="StepNextButton" runat="server" CommandName="MoveNext" CssClass="btn btn-library-10 form-control form-control-lg" Text="Register" />
                                         </CustomNavigationTemplate>
                                     </asp:CreateUserWizardStep>
                                     <asp:CompleteWizardStep ID="CompleteWizardStep1" runat="server">
+                                        <ContentTemplate>
+                                            <div class="text-center">
+                                                Your account has been successfully created.
+                                            </div>
+                                                <div class="text-right">
+                                                    <asp:Button ID="ContinueButton" runat="server" CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard" CssClass="btn btn-success"/>
+                                                </div>
+                                        </ContentTemplate>
                                     </asp:CompleteWizardStep>
                                 </WizardSteps>
                             </asp:CreateUserWizard>
