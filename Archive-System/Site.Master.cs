@@ -20,5 +20,10 @@ namespace Archive_System
             navbar.Visible = false;
             footer_primary.Visible = false;
         }
+
+        protected void BtnTopFind_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"~/Search.aspx?field=all&term={TbxTopFind.Text}");
+        }
     }
 }

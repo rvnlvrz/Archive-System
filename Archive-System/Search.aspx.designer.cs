@@ -10,34 +10,25 @@
 namespace Archive_System {
     
     
-    public partial class Upload {
+    public partial class Search {
         
         /// <summary>
-        /// Label4 control.
+        /// lbl_searchbox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lbl_searchbox;
         
         /// <summary>
-        /// Tbx_FileName control.
+        /// TbxSearchTerms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Tbx_FileName;
-        
-        /// <summary>
-        /// ReqVal_FileName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ReqVal_FileName;
+        protected global::System.Web.UI.WebControls.TextBox TbxSearchTerms;
         
         /// <summary>
         /// Label3 control.
@@ -49,192 +40,147 @@ namespace Archive_System {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// DRP_Category control.
+        /// DrpItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DRP_Category;
+        protected global::System.Web.UI.WebControls.DropDownList DrpItem;
         
         /// <summary>
-        /// Lbl_AuthA control.
+        /// DrpWords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_AuthA;
+        protected global::System.Web.UI.WebControls.DropDownList DrpWords;
         
         /// <summary>
-        /// Tbx_AuthA_First control.
+        /// DrpField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Tbx_AuthA_First;
+        protected global::System.Web.UI.WebControls.DropDownList DrpField;
         
         /// <summary>
-        /// Tbx_AuthA_Last control.
+        /// BtnSearchDocuments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Tbx_AuthA_Last;
+        protected global::System.Web.UI.WebControls.Button BtnSearchDocuments;
         
         /// <summary>
-        /// CustomValidator1 control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// ReqValC_AuthA_First control.
+        /// Hfd_ID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator ReqValC_AuthA_First;
+        protected global::System.Web.UI.WebControls.HiddenField Hfd_ID;
         
         /// <summary>
-        /// Label1 control.
+        /// Lvw_Results control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.ListView Lvw_Results;
         
         /// <summary>
-        /// Tbx_AuthB_First control.
+        /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Tbx_AuthB_First;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// Tbx_AuthB_Last control.
+        /// Lbl_Catgory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Tbx_AuthB_Last;
+        protected global::System.Web.UI.WebControls.Label Lbl_Catgory;
         
         /// <summary>
-        /// ReqValC_AuthB_First control.
+        /// UpdatePanel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator ReqValC_AuthB_First;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
-        /// ReqValC_AuthB_Last control.
+        /// FVW_DocumentDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator ReqValC_AuthB_Last;
+        protected global::System.Web.UI.WebControls.FormView FVW_DocumentDetails;
         
         /// <summary>
-        /// Label2 control.
+        /// Lbl_Authors control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Lbl_Authors;
         
         /// <summary>
-        /// Tbx_AuthC_First control.
+        /// FvwBtn_Download control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Tbx_AuthC_First;
+        protected global::System.Web.UI.WebControls.Button FvwBtn_Download;
         
         /// <summary>
-        /// Tbx_AuthC_Last control.
+        /// Btn_DownloadAttachment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Tbx_AuthC_Last;
+        protected global::System.Web.UI.WebControls.Button Btn_DownloadAttachment;
         
         /// <summary>
-        /// CustomValidator2 control.
+        /// SDT_DocumentData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CustomValidator2;
+        protected global::System.Web.UI.WebControls.SqlDataSource SDT_DocumentData;
         
         /// <summary>
-        /// ReqValC_AuthC_First control.
+        /// SDT_Results control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator ReqValC_AuthC_First;
-        
-        /// <summary>
-        /// Lbl_uploadBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_uploadBox;
-        
-        /// <summary>
-        /// FileUpload_Documents control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload_Documents;
-        
-        /// <summary>
-        /// Lbl_attachmentBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_attachmentBox;
-        
-        /// <summary>
-        /// FileUpload_Attachments control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload_Attachments;
-        
-        /// <summary>
-        /// Btn_Upload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Upload;
+        protected global::System.Web.UI.WebControls.SqlDataSource SDT_Results;
     }
 }
