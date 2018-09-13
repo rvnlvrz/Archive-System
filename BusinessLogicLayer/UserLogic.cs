@@ -16,7 +16,7 @@ namespace BusinessLogicLayer
 
         public bool UpdateName(string firstName, string middleName, string lastName, Guid userId)
         {
-            var rowsAffected = Adapter.UpdateName(firstName, middleName, lastName, userId);
+            var rowsAffected = Adapter.UpdateName(firstName.ToUpper(), middleName.ToUpper(), lastName.ToUpper(), userId);
             return rowsAffected == 1;
         }
     }
