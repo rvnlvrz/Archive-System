@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - Archive System</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -76,17 +76,18 @@
                 <a href="/" class="navbar-brand text-center" id="home-nav-brand"></a>
                 <div class="navbar-collapse collapse dual-nav w-50 order-2">
                     <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user"></i></a></li>
-                        <asp:LoginView ID="LoginView1" runat="server">
-                            <LoggedInTemplate>
-                                Hello, <asp:LoginName ID="LoginName1" runat="server" />
-                            </LoggedInTemplate>
-                            <AnonymousTemplate>
-                                Hello, stranger
-                                <%--<asp:HyperLink ID="LogInHyperLink" runat="server" NavigateUrl="Login.aspx">Log In</asp:HyperLink>--%>
-                            </AnonymousTemplate>
-                        </asp:LoginView>
-                        <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                        <li class="nav-item">
+                            <i class="fas fa-user"></i>
+                            <asp:LoginView ID="LoginView1" runat="server">
+                                <LoggedInTemplate>
+                                    Hello,&nbsp;<asp:LoginName ID="LoginName1" runat="server" />
+                                </LoggedInTemplate>
+                                <AnonymousTemplate>
+                                    Hello, stranger
+                                </AnonymousTemplate>
+                            </asp:LoginView>
+                            <asp:LoginStatus ID="LoginStatus1" runat="server" CssClass="btn-sm btn-primary" />
+                        </li>
                     </ul>
                 </div>
             </div>
