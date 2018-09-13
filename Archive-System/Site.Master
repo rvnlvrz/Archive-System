@@ -75,7 +75,7 @@
                 </div>
                 <a href="/" class="navbar-brand text-center" id="home-nav-brand"></a>
                 <div class="navbar-collapse collapse dual-nav w-50 order-2">
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ml-auto text-white">
                         <li class="nav-item">
                             <i class="fas fa-user"></i>
                             <asp:LoginView ID="LoginView1" runat="server">
