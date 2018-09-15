@@ -176,5 +176,21 @@ namespace Archive_System
             args.IsValid = HasCompleteAuthors(args.Value, Tbx_AuthC_Last.Text) &&
                 HasCompleteAuthors(args.Value, Tbx_AuthC_First.Text);
         }
+
+        protected void NoDuplicateC_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string authAConcat = (Tbx_AuthA_First.Text + Tbx_AuthA_Last.Text).ToLower();
+            string authBConcat = (Tbx_AuthB_First.Text + Tbx_AuthB_Last.Text).ToLower();
+            string authCConcat = (Tbx_AuthC_First.Text + Tbx_AuthC_Last.Text).ToLower();
+
+            if ((authAConcat == authBConcat) || (authAConcat == authCConcat) || (authBConcat == authCConcat))
+            {
+                args.IsValid = false;
+            }
+            else
+            {
+                args.IsValid = true;
+            }
+        }
     }
 }

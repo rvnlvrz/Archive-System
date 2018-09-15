@@ -103,6 +103,15 @@ namespace Archive_System {
         protected global::System.Web.UI.WebControls.CustomValidator ReqValC_AuthA_First;
         
         /// <summary>
+        /// NoRepeatA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator NoRepeatA;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -148,6 +157,15 @@ namespace Archive_System {
         protected global::System.Web.UI.WebControls.CustomValidator ReqValC_AuthB_Last;
         
         /// <summary>
+        /// NoRepeatB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator NoRepeatB;
+        
+        /// <summary>
         /// Label2 control.
         /// </summary>
         /// <remarks>
@@ -191,6 +209,15 @@ namespace Archive_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CustomValidator ReqValC_AuthC_First;
+        
+        /// <summary>
+        /// NoRepeatC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator NoRepeatC;
         
         /// <summary>
         /// Lbl_uploadBox control.

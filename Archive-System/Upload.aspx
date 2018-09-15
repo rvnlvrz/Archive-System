@@ -37,6 +37,8 @@
                                     <asp:CustomValidator ID="ReqValC_AuthA_First" runat="server" ErrorMessage="Both the author's first and last names are required"
                                         OnServerValidate="ReqValC_AuthA_ServerValidate" ControlToValidate="Tbx_AuthA_First"
                                         Display="Dynamic" ValidationGroup="first" ForeColor="Red"></asp:CustomValidator>
+                                    <asp:CustomValidator ID="NoRepeatA" runat="server" ErrorMessage="An author's name may only appear once" 
+                                        ControlToValidate="Tbx_AuthA_Last" ForeColor="Red" Display="Dynamic" ValidationGroup="first" OnServerValidate="NoDuplicateC_ServerValidate"></asp:CustomValidator>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -54,6 +56,8 @@
                                     <asp:CustomValidator ID="ReqValC_AuthB_Last" runat="server" ErrorMessage="Both the author's first and last names are required"
                                         OnServerValidate="ReqValC_AuthB_ServerValidate" ControlToValidate="Tbx_AuthB_Last"
                                         Display="Dynamic" ValidationGroup="second" ForeColor="Red"></asp:CustomValidator>
+                                    <asp:CustomValidator ID="NoRepeatB" runat="server" ErrorMessage="An author's name may only appear once" 
+                                        ControlToValidate="Tbx_AuthB_Last" ForeColor="Red" Display="Dynamic" ValidationGroup="second" OnServerValidate="NoDuplicateC_ServerValidate"></asp:CustomValidator>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -67,10 +71,12 @@
                                     </div>
                                     <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Both the author's first and last names are required"
                                         OnServerValidate="ReqValC_AuthC_ServerValidate" ControlToValidate="Tbx_AuthC_Last"
-                                        Display="Dynamic" ValidationGroup="second" ForeColor="Red"></asp:CustomValidator>
+                                        Display="Dynamic" ValidationGroup="third" ForeColor="Red"></asp:CustomValidator>
                                     <asp:CustomValidator ID="ReqValC_AuthC_First" runat="server" ErrorMessage="Both the author's first and last names are required"
                                         OnServerValidate="ReqValC_AuthC_ServerValidate" ControlToValidate="Tbx_AuthC_First"
-                                        Display="Dynamic" ValidationGroup="second" ForeColor="Red"></asp:CustomValidator>
+                                        Display="Dynamic" ValidationGroup="third" ForeColor="Red"></asp:CustomValidator>
+                                    <asp:CustomValidator ID="NoRepeatC" runat="server" ErrorMessage="An author's name may only appear once" 
+                                        ControlToValidate="Tbx_AuthC_Last" ForeColor="Red" Display="Dynamic" ValidationGroup="third" OnServerValidate="NoDuplicateC_ServerValidate"></asp:CustomValidator>
                                 </div>
                             </div>
                             <div class="form-group">
