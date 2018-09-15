@@ -103,7 +103,7 @@
                 <div class="container justify-content-center">
                     <div class="row">
                         <div class="col-md-3 col-sm-3">
-                            <div data-toggle="collapse" class="taber" data-parent="#accordion" href="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+                            <div data-toggle="collapse" class="taber font-weight-bold text-mapuan-gold" data-parent="#accordion" href="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
                                 Archives
                             </div>
                             <div id="collapseZero" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingZero">
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-3">
-                            <div data-toggle="collapse" class="taber" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <div data-toggle="collapse" class="taber font-weight-bold text-mapuan-gold" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 Affiliates
                             </div>
                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
@@ -128,7 +128,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-3">
-                            <div class="taber" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="false" aria-controls="collapseOne">
+                            <div class="taber font-weight-bold text-mapuan-gold" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="false" aria-controls="collapseOne">
                                 One Malayan
                             </div>
 
@@ -141,7 +141,7 @@
                         </div>
                         <div class="col-md-3 col-sm-3">
 
-                            <div class="taber" data-toggle="collapse" data-parent="#accordion" href="#collapsethree" aria-expanded="false" aria-controls="collapseOne">
+                            <div class="taber font-weight-bold text-mapuan-gold" data-toggle="collapse" data-parent="#accordion" href="#collapsethree" aria-expanded="false" aria-controls="collapseOne">
                                 Careers
                             </div>
                             <div id="collapsethree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">

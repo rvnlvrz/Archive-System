@@ -102,7 +102,7 @@
 }
 
 .bullet-less a {
-    color: #2362c6;
+    color: #fff;
 }
 
     .bullet-less a:hover {
@@ -425,6 +425,10 @@ select.form-control:focus {
     border-top: 1px solid #8B0000;
 }
 
+.text-mapuan-gold {
+    color: #B8860B !important;
+}
+
 .bg-mapuan-gold {
     background-color: #B8860B !important;
     border-color: #B8860B !important;
@@ -489,7 +493,7 @@ footer ul li, .taber {
     text-align: center;
 }
 
-@media (max-width:723px) {
+@media only screen and (min-width:320px) and (max-width:723px) {
     .taber {
         border-bottom: 1px solid #ccc;
         padding-bottom: 10px;
