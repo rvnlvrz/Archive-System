@@ -82,7 +82,8 @@
                             <div class="form-group">
                                 <asp:Label ID="Lbl_uploadBox" runat="server" Text="Document" CssClass="lead col-form-label text-uppercase"></asp:Label>
                                 <div class="wrap border border-danger rounded">
-                                    <asp:FileUpload ID="FileUpload_Documents" runat="server" />
+                                    <asp:FileUpload ID="FileUpload_Documents" runat="server" accept=".pdf"/>
+                                    <asp:RegularExpressionValidator ID="RegExValidator" runat="server" ControlToValidate="FileUpload_Documents" ErrorMessage="Only PDF files are allowed." ValidationExpression="(.*\.([Pp][Dd][Ff])$)" CssClass="text-danger" Display="Dynamic"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="form-group">

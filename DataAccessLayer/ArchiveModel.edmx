@@ -510,6 +510,7 @@
           <NavigationProperty Name="Category" Relationship="ArchiveModel.DocumentCategory" FromRole="Document" ToRole="Category" />
           <NavigationProperty Name="Attachments" Relationship="ArchiveModel.DocumentAttachment" FromRole="Document" ToRole="Attachment" />
           <Property Name="UploadDate" Type="DateTime" Nullable="false" />
+          <Property Name="Preview" Type="Binary" Nullable="false" MaxLength="Max" />
         </EntityType>
         <EntityType Name="Author">
           <Key>

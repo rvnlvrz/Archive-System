@@ -27,6 +27,7 @@ namespace DataAccessLayer
         public byte[] File { get; set; }
         public string ContentType { get; set; }
         public System.DateTime UploadDate { get; set; }
+        public byte[] Preview { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Author> Authors { get; set; }

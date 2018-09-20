@@ -9,6 +9,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Transactions;
 using System.Configuration;
+using Ghostscript.NET;
+using Ghostscript.NET.Rasterizer;
 
 namespace Archive_System
 {
@@ -73,6 +75,8 @@ namespace Archive_System
                     bytes = br.ReadBytes((Int32)fs.Length);
                 }
             }
+
+            
 
             using (TransactionScope scope = new TransactionScope())
             {
