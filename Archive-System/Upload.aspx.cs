@@ -42,6 +42,16 @@ namespace Archive_System
                     ScriptManager.RegisterStartupScript(Btn_Upload, GetType(), "UpdateNotifModal",
                         @"$('#compeleteModal').modal('toggle');", true);
                 }
+                else if (!FileUpload_Documents.HasFile)
+                {
+                    ScriptManager.RegisterStartupScript(Btn_Upload, GetType(), "UpdateNotifModal",
+                        @"$('#NoDocumentModal').modal('toggle');", true);
+                }
+                else if(!FileUpload_Attachments.HasFile && FileUpload_Attachments.HasFile)
+                {
+                    ScriptManager.RegisterStartupScript(Btn_Upload, GetType(), "UpdateNotifModal",
+                        @"$('#DocumentRequiredModal').modal('toggle');", true);
+                }
             }
             catch (Exception)
             {
@@ -183,7 +193,9 @@ namespace Archive_System
             string authBConcat = (Tbx_AuthB_First.Text + Tbx_AuthB_Last.Text).ToLower();
             string authCConcat = (Tbx_AuthC_First.Text + Tbx_AuthC_Last.Text).ToLower();
 
-            if ((authAConcat == authBConcat) || (authAConcat == authCConcat) || (authBConcat == authCConcat))
+            bool AuthFieldsEmpty = (authBConcat == string.Empty) || (authCConcat == string.Empty);
+
+            if ((authAConcat == authBConcat) || (authAConcat == authCConcat) || ((authBConcat == authCConcat) && !AuthFieldsEmpty))
             {
                 args.IsValid = false;
             }
