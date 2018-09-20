@@ -45,7 +45,7 @@
                     <span class="fa fa-graduation-cap"></span>&nbsp;The Cardinal Archives
                 </div>
                 <div class="col-md-4 text-right">
-                    <asp:Panel ID="Panel1" runat="server" CssClass="input-group w-75 mx-auto">
+                    <asp:Panel ID="Panel1" runat="server" CssClass="input-group w-75 mx-auto" DefaultButton="BtnTopFind">
                         <asp:TextBox ID="TbxTopFind" runat="server" CssClass="form-control form-control-lg" Font-Size="14px" placeholder="search this site"></asp:TextBox>
                         <div class="input-group-append">
                             <asp:LinkButton ID="BtnTopFind" runat="server" CssClass="btn btn-git btn-lg" OnClick="BtnTopFind_Click"><i class="fa fa-search"></i></asp:LinkButton>
