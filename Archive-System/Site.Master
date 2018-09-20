@@ -7,11 +7,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - Archive System</title>
-
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <%--<link href="Content/fontAwseome.all.min.css" rel="stylesheet" />--%>
     <link href="Content/academicons.min.css" rel="stylesheet" />
