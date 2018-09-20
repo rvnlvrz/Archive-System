@@ -50,6 +50,9 @@
                                     <a href="#">Terms of Use</a> and to our <a href="#">Privacy Policy</a>.
                                         </p>
                                     </div>
+                                    <div>
+                                        <a href="Default.aspx">Go to Home</a>
+                                    </div>
                                 </LayoutTemplate>
                             </asp:Login>
                         </div>

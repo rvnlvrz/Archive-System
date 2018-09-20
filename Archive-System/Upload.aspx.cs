@@ -9,8 +9,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Transactions;
 using System.Configuration;
-using Ghostscript.NET;
-using Ghostscript.NET.Rasterizer;
 
 namespace Archive_System
 {

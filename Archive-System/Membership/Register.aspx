@@ -28,7 +28,7 @@
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <asp:TextBox ID="MiddleName" runat="server" CssClass="form-control" placeholder="Middle Name"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="MiddleNameRequired" runat="server" ControlToValidate="MiddleName" Display="Dynamic" ErrorMessage="Middle Name is required." CssClass="text-danger"></asp:RequiredFieldValidator>
+                                                    <%--<asp:RequiredFieldValidator ID="MiddleNameRequired" runat="server" ControlToValidate="MiddleName" Display="Dynamic" ErrorMessage="Middle Name is required." CssClass="text-danger"></asp:RequiredFieldValidator>--%>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <asp:TextBox ID="LastName" runat="server" CssClass="form-control" placeholder="Last Name"></asp:TextBox>
@@ -75,6 +75,10 @@
                                     </asp:CompleteWizardStep>
                                 </WizardSteps>
                             </asp:CreateUserWizard>
+                            <br />
+                            <div>
+                                <a href="../Default.aspx">Go to Home</a>
+                            </div>
                         </div>
                     </div>
                 </div>
