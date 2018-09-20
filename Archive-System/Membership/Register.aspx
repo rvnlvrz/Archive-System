@@ -16,7 +16,7 @@
                             <h2 class="card-title text-center">
                                 <strong>Sign Up</strong>
                             </h2>
-                            <asp:CreateUserWizard ID="CreateUserWizard" runat="server" CssClass="w-100" CreateUserButtonText="Register" OnCreatedUser="CreateUserWizard_CreatedUser" ActiveStepIndex="1" ContinueDestinationPageUrl="~/Default.aspx">
+                            <asp:CreateUserWizard ID="CreateUserWizard" runat="server" CssClass="w-100" CreateUserButtonText="Register" OnCreatedUser="CreateUserWizard_CreatedUser" ActiveStepIndex="1" ContinueDestinationPageUrl="~/Default.aspx" OnCreatingUser="CreateUserWizard_CreatingUser">
                                 <CreateUserButtonStyle CssClass="btn btn-library-10 form-control form-control-lg" />
                                 <WizardSteps>
                                     <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
@@ -51,8 +51,9 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <asp:TextBox ID="Email" runat="server" CssClass="form-control mb-1" placeholder="E-mail"></asp:TextBox>
+                                                <asp:TextBox ID="Email" runat="server" CssClass="form-control mb-1" placeholder="E-mail" TextMode="Email"></asp:TextBox>
                                                 <asp:RequiredFieldValidator ID="EmailRequired" runat="server" ControlToValidate="Email" ErrorMessage="E-mail is required." ToolTip="E-mail is required." CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
+                                                <%--<asp:RegularExpressionValidator ID="EmailRegularExpression" runat="server" ErrorMessage="Invalid E-mail address." ControlToValidate="Email"></asp:RegularExpressionValidator>--%>
                                             </div>
                                             <div class="text-danger">
                                                 <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>

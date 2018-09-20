@@ -32,5 +32,13 @@ namespace Archive_System.Membership
 
             CreateUserWizard.MoveTo(CreateUserWizardStep1);
         }
+
+        protected void CreateUserWizard_CreatingUser(object sender, LoginCancelEventArgs e)
+        {
+            if (!Page.IsValid)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
