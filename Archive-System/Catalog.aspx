@@ -159,7 +159,7 @@
             <asp:ControlParameter ControlID="Hfd_ID" Name="ID" PropertyName="Value" Type="Int32" />
         </SelectParameters>
     </asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="            SELECT docID, Category, Document FROM DocumentMetaPlain WHERE Category = 'Thesis'
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT docID, Category, Document FROM DocumentMetaPlain WHERE Category = 'Thesis' OR Category = 'Capstone'
                 GROUP BY docID, Category, Document
                 ORDER BY Category"></asp:SqlDataSource>
 </asp:Content>
