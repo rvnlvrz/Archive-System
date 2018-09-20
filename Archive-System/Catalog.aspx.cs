@@ -294,5 +294,40 @@ namespace Archive_System
             SqlDataSource1.DataBind();
             LvwDocuments.DataBind();
         }
+
+        protected void LvwDocuments_PreRender(object sender, EventArgs e)
+        {
+            if (Drp_Filter.SelectedValue == "0")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain GROUP BY docID, Category, " +
+                    "Document ORDER BY Category";
+            }
+            else if (Drp_Filter.SelectedValue == "1")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE Category = 'Thesis' " +
+                    "GROUP BY docID, Category, Document ORDER BY Document";
+            }
+            else if (Drp_Filter.SelectedValue == "2")
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE Category = 'Capstone' " +
+                    "GROUP BY docID, Category, Document ORDER BY Document";
+            }
+            else
+            {
+                SqlDataSource1.SelectCommand =
+                    "SELECT docID, Category, Document FROM " +
+                    "DocumentMetaPlain WHERE docID IN (SELECT DocumentID FROM Attachments) " +
+                    "GROUP BY docID, Category, Document ORDER BY Category";
+            }
+
+            SqlDataSource1.DataBind();
+            LvwDocuments.DataBind();
+        }
     }
 }
