@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <asp:ListView ID="LvwDocuments" runat="server" DataKeyNames="docID" DataSourceID="SqlDataSource1" GroupItemCount="4"
-                        OnItemCommand="LvwDocuments_ItemCommand" OnPreRender="LvwDocuments_PreRender">
+                        OnItemCommand="LvwDocuments_ItemCommand">
                         <EmptyDataTemplate>
                             <table runat="server" style="">
                                 <tr>
