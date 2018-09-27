@@ -1,46 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Transactions;
-using System.Configuration;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Archive_System
 {
-    public partial class Search : System.Web.UI.Page
+    public partial class Search : Page
     {
-        string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly string _connString =
+            ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string h_term = CleanString(Request.Params["term"]);
+            var hTerm = CleanString(Request.Params["term"]);
             if (Request.Params["term"] != null && Request.Params["field"].Trim().ToUpper() == "ALL")
-            {
                 SDT_Results.SelectCommand =
-                    $"SELECT * FROM DocumentMetaPlain WHERE docID IN (" +
-                    $"SELECT docID FROM DocumentMeta WHERE " +
-                    $"CONTAINS(Category, '\"{h_term}*\"') OR " +
-                    $"CONTAINS(Document, '\"{h_term}*\"') OR " +
-                    $"CONTAINS(Author, '\"{h_term}*\"')) ";
-            }
+                    "SELECT * FROM DocumentMetaPlain WHERE docID IN (" +
+                    "SELECT docID FROM DocumentMeta WHERE " +
+                    $"CONTAINS(Category, '\"{hTerm}*\"') OR " +
+                    $"CONTAINS(Document, '\"{hTerm}*\"') OR " +
+                    $"CONTAINS(Author, '\"{hTerm}*\"')) ";
             else if (Request.Params["term"] != null && Request.Params["field"].Trim().ToUpper() == "AUTH")
-            {
                 SDT_Results.SelectCommand =
-                    $"SELECT * FROM DocumentMetaPlain WHERE docID IN (" +
-                    $"SELECT docID FROM DocumentMeta WHERE " +
-                    $"CONTAINS(Author, '\"{h_term}*\"')) ";
-            }
+                    "SELECT * FROM DocumentMetaPlain WHERE docID IN (" +
+                    "SELECT docID FROM DocumentMeta WHERE " +
+                    $"CONTAINS(Author, '\"{hTerm}*\"')) ";
             else if (Request.Params["term"] != null && Request.Params["field"].Trim().ToUpper() == "CAT")
-            {
                 SDT_Results.SelectCommand =
-                    $"SELECT * FROM DocumentMetaPlain WHERE docID IN (" +
-                    $"SELECT docID FROM DocumentMeta WHERE " +
-                    $"CONTAINS(Category, '\"{h_term}*\"')) ";
-            }
+                    "SELECT * FROM DocumentMetaPlain WHERE docID IN (" +
+                    "SELECT docID FROM DocumentMeta WHERE " +
+                    $"CONTAINS(Category, '\"{hTerm}*\"')) ";
         }
 
         protected void Lvw_Results_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -55,22 +47,19 @@ namespace Archive_System
 
         protected string GetCategory()
         {
-            int currID = Convert.ToInt32(Hfd_ID.Value);
-            string query = "SELECT Category FROM DocumentMeta WHERE docID = @id";
-            string result = "";
+            var currId = Convert.ToInt32(Hfd_ID.Value);
+            var query = "SELECT Category FROM DocumentMeta WHERE docID = @id";
+            var result = "";
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (var conn = new SqlConnection(_connString))
             {
                 conn.Open();
-                using (SqlCommand comm = new SqlCommand(query, conn))
+                using (var comm = new SqlCommand(query, conn))
                 {
-                    comm.Parameters.Add("@id", SqlDbType.Int).Value = currID;
-                    using (SqlDataReader dr = comm.ExecuteReader())
+                    comm.Parameters.Add("@id", SqlDbType.Int).Value = currId;
+                    using (var dr = comm.ExecuteReader())
                     {
-                        while (dr.Read())
-                        {
-                            result = Convert.ToString(dr["Category"]);
-                        }
+                        while (dr.Read()) result = Convert.ToString(dr["Category"]);
                     }
                 }
             }
@@ -80,30 +69,24 @@ namespace Archive_System
 
         protected string GetAuthors()
         {
-            int currID = Convert.ToInt32(Hfd_ID.Value);
-            string query = "SELECT * FROM DocumentMeta WHERE docID = @id";
-            string result = "";
-            List<string> authors = new List<string>(3);
-            using (SqlConnection conn = new SqlConnection(connString))
+            var currId = Convert.ToInt32(Hfd_ID.Value);
+            var query = "SELECT * FROM DocumentMeta WHERE docID = @id";
+            var result = "";
+            var authors = new List<string>(3);
+            using (var conn = new SqlConnection(_connString))
             {
                 conn.Open();
-                using (SqlCommand comm = new SqlCommand(query, conn))
+                using (var comm = new SqlCommand(query, conn))
                 {
-                    comm.Parameters.Add("@id", SqlDbType.Int).Value = currID;
-                    using (SqlDataReader dr = comm.ExecuteReader())
+                    comm.Parameters.Add("@id", SqlDbType.Int).Value = currId;
+                    using (var dr = comm.ExecuteReader())
                     {
-                        while (dr.Read())
-                        {
-                            authors.Add(Convert.ToString(dr["Author"]));
-                        }
+                        while (dr.Read()) authors.Add(Convert.ToString(dr["Author"]));
                     }
                 }
             }
 
-            foreach (string name in authors)
-            {
-                result += $"{name}, ";
-            }
+            foreach (var name in authors) result += $"{name}, ";
 
             result = result.Substring(0, result.LastIndexOf(",")).Trim();
 
@@ -112,15 +95,15 @@ namespace Archive_System
 
         protected bool HasAttachment()
         {
-            int currID = Convert.ToInt32(Hfd_ID.Value);
-            int result = -1;
-            string query = "SELECT COUNT(*) FROM Attachments WHERE DocumentID = @id";
-            using (SqlConnection conn = new SqlConnection(connString))
+            var currId = Convert.ToInt32(Hfd_ID.Value);
+            var result = -1;
+            var query = "SELECT COUNT(*) FROM Attachments WHERE DocumentID = @id";
+            using (var conn = new SqlConnection(_connString))
             {
                 conn.Open();
-                using (SqlCommand comm = new SqlCommand(query, conn))
+                using (var comm = new SqlCommand(query, conn))
                 {
-                    comm.Parameters.Add("@id", SqlDbType.Int).Value = currID;
+                    comm.Parameters.Add("@id", SqlDbType.Int).Value = currId;
                     result = Convert.ToInt32(comm.ExecuteScalar());
                 }
             }
@@ -130,38 +113,32 @@ namespace Archive_System
 
         protected string SetText()
         {
-            int currID = Convert.ToInt32(Hfd_ID.Value);
+            var currId = Convert.ToInt32(Hfd_ID.Value);
 
             if (HasAttachment())
-            {
                 return "Download Attachment";
-            }
-            else
-            {
-                return "No Attachment Available";
-            }
-
+            return "No Attachment Available";
         }
 
-        private void DownloadDocument(int documentID)
+        private void DownloadDocument(int documentId)
         {
-            int id = documentID;
+            var id = documentId;
             byte[] bytes = null;
-            string fileName = "";
-            string contentType = "";
+            var fileName = "";
+            var contentType = "";
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (var conn = new SqlConnection(_connString))
             {
                 conn.Open();
-                string query = "SELECT * FROM DocumentSets WHERE ID = @id";
-                using (SqlCommand comm = new SqlCommand(query, conn))
+                var query = "SELECT * FROM DocumentSets WHERE ID = @id";
+                using (var comm = new SqlCommand(query, conn))
                 {
                     comm.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                    using (SqlDataReader reader = comm.ExecuteReader())
+                    using (var reader = comm.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            bytes = (byte[])reader["document"];
+                            bytes = (byte[]) reader["document"];
                             fileName = Convert.ToString(reader["documentName"]);
                             contentType = Convert.ToString(reader["docType"]);
                         }
@@ -180,25 +157,25 @@ namespace Archive_System
             Response.End();
         }
 
-        private void DownloadAttachment(int documentID)
+        private void DownloadAttachment(int documentId)
         {
-            int id = documentID;
+            var id = documentId;
             byte[] bytes = null;
-            string fileName = "";
-            string contentType = "";
+            var fileName = "";
+            var contentType = "";
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (var conn = new SqlConnection(_connString))
             {
                 conn.Open();
-                string query = "SELECT * FROM DocumentSets WHERE ID = @id";
-                using (SqlCommand comm = new SqlCommand(query, conn))
+                var query = "SELECT * FROM DocumentSets WHERE ID = @id";
+                using (var comm = new SqlCommand(query, conn))
                 {
                     comm.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                    using (SqlDataReader reader = comm.ExecuteReader())
+                    using (var reader = comm.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            bytes = (byte[])reader["attachment"];
+                            bytes = (byte[]) reader["attachment"];
                             fileName = Convert.ToString(reader["attachmentName"]);
                             contentType = Convert.ToString(reader["atachmentType"]);
                         }
@@ -219,28 +196,26 @@ namespace Archive_System
 
         protected void FvwBtn_Download_ServerClick(object sender, EventArgs e)
         {
-            int currID = Convert.ToInt32(Hfd_ID.Value);
-            DownloadDocument(currID);
+            var currId = Convert.ToInt32(Hfd_ID.Value);
+            DownloadDocument(currId);
         }
 
         protected void Btn_DownloadAttachment_Click(object sender, EventArgs e)
         {
-            int currID = Convert.ToInt32(Hfd_ID.Value);
-            DownloadAttachment(currID);
+            var currId = Convert.ToInt32(Hfd_ID.Value);
+            DownloadAttachment(currId);
         }
 
         private string CleanString(string input)
         {
-            string output = "";
+            var output = "";
 
             try
             {
                 output = input.Replace("'", "''");
-
             }
             catch (Exception)
             {
-
             }
 
             return output;
@@ -249,21 +224,19 @@ namespace Archive_System
         protected void BtnSearchDocuments_Click(object sender, EventArgs e)
         {
             Response.Redirect($"~/Search.aspx?field={DrpField.SelectedValue}&term={TbxSearchTerms.Text}");
-
         }
 
         protected string CleanTitle(object title)
         {
-            string t_title = title.ToString();
-            string result = t_title;
+            var tTitle = title.ToString();
+            var result = tTitle;
 
             try
             {
-                result = t_title.Substring(0, t_title.LastIndexOf("."));
+                result = tTitle.Substring(0, tTitle.LastIndexOf("."));
             }
             catch (Exception)
             {
-
             }
 
             return result;
