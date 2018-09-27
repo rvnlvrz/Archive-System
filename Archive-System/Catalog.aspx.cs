@@ -27,6 +27,8 @@ namespace Archive_System
             Lbl_Authors.DataBind();
             Btn_DownloadAttachment.DataBind();
             Lbl_Catgory.DataBind();
+            ScriptManager.RegisterStartupScript(MainUpdatePanel, GetType(), "show",
+                @"$('#documentModal').modal('show');", true);
         }
 
         private void DownloadDocument(int documentID)

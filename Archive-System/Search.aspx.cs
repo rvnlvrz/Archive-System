@@ -49,6 +49,8 @@ namespace Archive_System
             Lbl_Authors.DataBind();
             Btn_DownloadAttachment.DataBind();
             Lbl_Catgory.DataBind();
+            ScriptManager.RegisterStartupScript(UpdatePanel1, GetType(), "show",
+                @"$('#documentModal').modal('show');", true);
         }
 
         protected string GetCategory()

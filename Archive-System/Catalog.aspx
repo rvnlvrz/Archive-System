@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="wrap">
         <div class="container">
-            <asp:UpdatePanel runat="server">
+            <asp:UpdatePanel ID="MainUpdatePanel" runat="server">
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="LvwDocuments" />
                     <asp:AsyncPostBackTrigger ControlID="Drp_Filter" />
@@ -55,7 +55,7 @@
                                     <div class="card-footer text-muted">
                                         <div class="my-1">
                                             <asp:Button ID="BtnViewDocument" runat="server" Text="View Details" CssClass="btn btn-library-10 btn-block"
-                                                CommandArgument='<%# Eval("docID") %>' CausesValidation="false" data-toggle="modal" data-target="#documentModal" />
+                                                CommandArgument='<%# Eval("docID") %>' CausesValidation="false" />
                                         </div>
                                     </div>
                                 </div>

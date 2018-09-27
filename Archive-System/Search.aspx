@@ -68,8 +68,7 @@
                                                         </div>
                                                         <div class="col align-self-center">
                                                             <asp:Button ID="BtnViewDetails" runat="server" Text="View Details" CssClass="btn btn-library btn-block"
-                                                                CommandArgument='<%# Eval("docID") %>' CausesValidation="false" data-toggle="modal"
-                                                                data-target="#documentModal" />
+                                                                CommandArgument='<%# Eval("docID") %>' CausesValidation="false" />
                                                         </div>
                                                     </div>
                                                 </div>
